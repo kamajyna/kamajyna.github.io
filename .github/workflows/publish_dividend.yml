@@ -1,17 +1,16 @@
-name: Daily Auto Blog Publisher
+name: Auto Publisher - Monthly Dividend
 
 on:
   schedule:
-    # 주 5회 (월~금) 오전 6시 KST (UTC 기준 일~목 21:00)
-    - cron: '0 21 * * 0-4'
-  workflow_dispatch: # 수동 실행을 위한 설정
+    # 주 5회 (월~금) 오전 7:00 KST (UTC 기준 일~목 22:00)
+    - cron: '0 22 * * 0-4'
+  workflow_dispatch: # 수동 실행
 
-# git push에 필요한 쓰기 권한 (기본 GITHUB_TOKEN은 읽기 전용 → push 403 실패의 원인)
 permissions:
   contents: write
 
 jobs:
-  build-and-publish:
+  publish-dividend:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
-      - name: Run auto blogger script
+      - name: Run auto blogger script (Dividend)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -36,12 +35,12 @@ jobs:
             echo "::error::GEMINI_API_KEY 시크릿이 설정되어 있지 않습니다. Settings > Secrets and variables > Actions 에서 추가하세요."
             exit 1
           fi
-          python scripts/auto_blogger.py
+          python scripts/auto_blogger.py --category dividend
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add _posts/
-          git commit -m "Auto-published post: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git commit -m "Auto-published dividend post: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push origin main

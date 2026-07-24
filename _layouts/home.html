@@ -14,11 +14,34 @@ layout: default
   {%- if site.posts.size > 0 -%}
     <div class="post-grid">
       {%- for post in site.posts -%}
+      {%- assign post_thumb = post.image | default: post.thumbnail -%}
+      {%- if post_thumb == nil or post_thumb == "" -%}
+        {%- if post.content contains "](" -%}
+          {%- assign parts = post.content | split: "](" -%}
+          {%- for part in parts offset:1 -%}
+            {%- assign img_candidate = part | split: ")" | first -%}
+            {%- if img_candidate contains "http" or img_candidate contains "assets" -%}
+              {%- assign post_thumb = img_candidate -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endif -%}
       <div class="post-card">
         <a class="post-link" href="{{ post.url | relative_url }}">
+          <div class="post-card-thumb">
+            {%- if post_thumb and post_thumb != "" -%}
+              <img src="{{ post_thumb }}" alt="{{ post.title | escape }}" loading="lazy" />
+            {%- else -%}
+              <div class="post-thumb-placeholder category-{{ post.categories | first | downcase }}">
+                <span class="placeholder-icon">📰</span>
+                <span class="placeholder-tag">{{ post.categories | first | default: "INSIGHT" }}</span>
+              </div>
+            {%- endif -%}
+          </div>
           <div class="post-card-content">
             {%- if post.categories.size > 0 -%}
-              <span class="post-meta-cat">{{ post.categories | first }}</span>
+              <span class="post-meta-cat cat-{{ post.categories | first | downcase }}">{{ post.categories | first }}</span>
             {%- endif -%}
             <h3 class="post-title">{{ post.title | escape }}</h3>
             <p class="post-excerpt">

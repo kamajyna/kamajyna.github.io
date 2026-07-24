@@ -6,16 +6,20 @@ on:
     - cron: '0 21 * * 0-4'
   workflow_dispatch: # 수동 실행을 위한 설정
 
+# git push에 필요한 쓰기 권한 (기본 GITHUB_TOKEN은 읽기 전용 → push 403 실패의 원인)
+permissions:
+  contents: write
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -28,6 +32,10 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY 시크릿이 설정되어 있지 않습니다. Settings > Secrets and variables > Actions 에서 추가하세요."
+            exit 1
+          fi
           python scripts/auto_blogger.py
 
       - name: Commit and push changes

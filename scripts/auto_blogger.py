@@ -37,35 +37,38 @@ def get_topic_by_category(category):
             "노션(Notion) 템플릿으로 완벽한 개인 일정 관리 시스템 만들기",
             "개발자와 기획자를 위한 생성형 AI 프롬프트 엔지니어링 실전 가이드"
         ]
+
+        articles = []
+        for url in rss_urls:
+            try:
+                feed = feedparser.parse(url)
+                for entry in feed.entries[:5]:  # 피드당 상위 5개
+                    articles.append(entry.title)
+            except Exception as e:
+                print(f"RSS 파싱 에러 ({url}): {e}")
+
+        if articles:
+            topic = random.choice(articles)
+            print(f"RSS에서 추출한 주제 [{category.upper()}]: {topic}")
+            return category, topic
+        else:
+            topic = random.choice(fallback_topics)
+            print(f"백업 목록에서 선택한 주제 [{category.upper()}]: {topic}")
+            return category, topic
+
     else:  # dividend / finance
-        rss_urls = [
-            "https://news.google.com/rss/search?q=%EC%9B%94%EB%B0%B0%EB%8B%B9+OR+ETF+OR+%EB%B0%B0%EB%8B%B9%EC%A3%BC+when:2d&hl=ko&gl=KR&ceid=KR:ko",
-            "https://news.google.com/rss/search?q=%EC%97%B0%EA%B8%88%EC%A0%80%EC%B6%95+OR+ISA%EA%B3%84%EC%A2%8C+when:2d&hl=ko&gl=KR&ceid=KR:ko"
+        dividend_stocks = [
+            "코카콜라 (KO)", "리얼티 인컴 (O)", "존슨앤존슨 (JNJ)", "애플 (AAPL)", 
+            "마이크로소프트 (MSFT)", "AT&T (T)", "스타벅스 (SBUX)", "슈와브 US 디비던드 에퀴티 (SCHD)", 
+            "JP모건 에퀴티 프리미엄 인컴 (JEPI)", "맥도날드 (MCD)", "프록터앤갬블 (PG)", 
+            "엑슨모빌 (XOM)", "셰브론 (CVX)", "애비브 (ABBV)", "화이자 (PFE)", 
+            "홈디포 (HD)", "버라이즌 (VZ)", "알트리아 (MO)", "록히드마틴 (LMT)", 
+            "텍사스 인스트루먼트 (TXN)", "스타우드 프로퍼티 (STWD)", "오메가 헬스케어 (OHI)",
+            "뱅크오브아메리카 (BAC)", "제이피모건체이스 (JPM)", "코스트코 (COST)"
         ]
-        fallback_topics = [
-            "SCHD vs JEPI: 미국 대표 월배당 ETF 장단점 및 수익률 비교 분석",
-            "연금저축펀드 계좌에서 절세 효과 누리며 모아가는 월배당 ETF 포트폴리오",
-            "월 50만원 현금흐름(배당금)을 만들기 위해 필요한 투자금과 추천 조합",
-            "초보자를 위한 한국판 SCHD(SOL, ACE, KODEX 미국배당다우존스) 전격 비교",
-            "ISA 계좌 배당주 투자 시 반드시 알아야 할 비과세 절세 혜택 총정리"
-        ]
-
-    articles = []
-    for url in rss_urls:
-        try:
-            feed = feedparser.parse(url)
-            for entry in feed.entries[:5]:  # 피드당 상위 5개
-                articles.append(entry.title)
-        except Exception as e:
-            print(f"RSS 파싱 에러 ({url}): {e}")
-
-    if articles:
-        topic = random.choice(articles)
-        print(f"RSS에서 추출한 주제 [{category.upper()}]: {topic}")
-        return category, topic
-    else:
-        topic = random.choice(fallback_topics)
-        print(f"백업 목록에서 선택한 주제 [{category.upper()}]: {topic}")
+        stock = random.choice(dividend_stocks)
+        topic = f"{stock} 배당 및 재무 분석 팩트시트"
+        print(f"랜덤 선정된 배당주 [{category.upper()}]: {topic}")
         return category, topic
 
 def generate_blog_post(category, topic):
@@ -110,32 +113,34 @@ image: "https://image.pollinations.ai/prompt/artificial_intelligence,future?widt
 """
     else:  # dividend / finance
         prompt = f"""
-당신은 현금흐름 기반 금융/주식/월배당 ETF 및 절세 재테크를 전문으로 다루는 수석 수량분석가이자 파워 블로거입니다.
-다음 월배당/재테크 주제에 대해 SEO에 완벽히 최적화된 블로그 포스트를 작성해주세요.
+당신은 현금흐름 기반 금융/배당주를 전문으로 분석하는 월스트리트 수석 수량분석가(Quant)이자 파워 블로거입니다.
+아래 종목에 대한 최신 배당 및 재무 데이터를 기반으로 **'배당주 객관적 분석 팩트시트(Factsheet)'**를 작성해주세요.
 
-주제: {topic}
+종목/주제: {topic}
 
 요구사항:
-1. 배당 투자자 및 재테크 관심층의 클릭을 유도하는 직관적이고 가치 있는 제목을 작성할 것
-2. 서론(투자 포인트 및 현금흐름 중요성), 목차(TOC), 본론(상세 스펙/배당수익률/절세 혜택/비교 표), 결론(투자의견 및 리스크 관리), FAQ 구조로 작성할 것
-3. 본론에는 수치 데이터를 한눈에 볼 수 있는 마크다운 비교 표(Markdown Table)를 반드시 1개 이상 포함할 것
-4. 마크다운 형식으로 작성할 것 (제목은 #, 소제목은 ##, ### 사용)
-5. 본문 내 강조할 부분은 굵은 글씨(**bold**)나 인용구(`>`)를 적극 활용할 것
-6. 본문 내 뉴스 보도나 시장 지표가 언급될 경우 출처 및 객관적 데이터 기반임을 밝히고 객관적인 정보 제공에 집중할 것 (신뢰도 준수)
-7. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://image.pollinations.ai/prompt/[핵심_영어_키워드]?width=800&height=450&nologo=true"`. 여기서 '[핵심_영어_키워드]'는 본 포스트 주제를 나타내는 2~3개의 영어 단어(예: stock_chart, dividend_money 등)를 넣어주세요. 본문 최상단에도 동일한 URL로 `![썸네일](URL)`을 삽입할 것.
-8. 본문 최하단에는 반드시 다음 **투자 면책 조항(Disclaimer)** 문구를 포함할 것:
+1. 검색엔진(SEO)에 최적화되고 투자자들의 클릭을 유도하는 직관적인 제목을 작성할 것 (예: "[종목명] 배당률 N%, 연 N회 지급! 2026년 배당 팩트시트")
+2. 목차(TOC)를 반드시 포함하고, 다음의 5가지 섹션을 필수적으로 작성할 것:
+   - 🏢 **기업 개요 및 비즈니스 모델**: 어떤 돈으로 배당을 주는지 간략한 소개
+   - 💰 **핵심 배당 팩트**: 현재 시가배당률(%), 1년에 배당 몇 번 주는지(월배당/분기배당/반기 등), 주요 배당 지급월, 연속 배당성장 연수 등 팩트 위주 나열
+   - 📊 **재무 건전성 및 실적**: 안정적으로 배당을 줄 수 있는 재무상태인지 (매출 추이, 이익률, Payout Ratio 등)
+   - 🎯 **월가 애널리스트 및 전문가 총평**: 투자은행, 분석가들의 목표가 컨센서스 및 최근 전망 요약
+   - 📋 **한눈에 보는 핵심 요약 표**: 주요 수치(티커, 배당률, 배당성장연수, 목표가 등)를 마크다운 표(Table)로 정리
+3. 억측이나 주관적 감정을 배제하고 **숫자와 팩트** 위주로 전문성 있게 작성할 것.
+4. 마크다운 형식으로 작성할 것 (제목은 #, 소제목은 ##, ### 사용). 본문 내 중요 팩트는 **bold** 처리하여 가독성을 높일 것.
+5. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://image.pollinations.ai/prompt/[해당종목_티커]_stock_chart_financial_dividend?width=800&height=450&nologo=true"`. (예: KO_stock_chart_financial_dividend). 본문 최상단에도 동일한 URL로 `![썸네일](URL)`을 삽입할 것.
+6. 본문 최하단에는 반드시 다음 **투자 면책 조항(Disclaimer)** 문구를 포함할 것:
    `<div class="disclaimer-box"><p>*(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)*</p></div>`
-9. 응답은 Frontmatter (layout, title, date, categories, tags, image)를 포함한 완벽한 Jekyll markdown 파일 내용이어야 합니다.
-10. 마크다운 코드블록(```markdown)으로 감싸지 말고 순수 텍스트만 출력하세요.
+7. 응답은 Frontmatter (layout, title, date, categories, tags, image)를 포함한 완벽한 Jekyll markdown 파일 내용이어야 합니다. 마크다운 코드블록(```markdown)으로 감싸지 말고 순수 텍스트만 출력하세요.
 
 Frontmatter 예시:
 ---
 layout: post
-title: "생성된 매력적인 제목"
+title: "생성된 매력적인 팩트시트 제목"
 date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Dividend, Finance]
-tags: [월배당, ETF, 재테크, 주식]
-image: "https://image.pollinations.ai/prompt/stock_chart,money?width=800&height=450&nologo=true"
+tags: [배당주, 미국주식, 팩트시트, 재테크]
+image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true"
 ---
 
 내용...

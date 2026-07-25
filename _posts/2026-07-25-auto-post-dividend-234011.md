@@ -7,7 +7,6 @@ tags: [애플, AAPL, 배당주, 미국주식, 배당성장주, 재테크]
 image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true"
 ---
 
-![애플 배당 팩트시트](https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true)
 
 월스트리트 수량분석가(Quant)의 시각에서 애플(Apple Inc., Ticker: **AAPL**)의 2026년 최신 배당 데이터 및 재무 건전성을 분석한 팩트시트입니다. 감정적 판단을 배제하고 **현금흐름(Cash Flow), 배당 커버리지, 재무 지표** 등 객관적 수치 위주로 정리했습니다.
 

@@ -3,6 +3,9 @@ import sys
 import argparse
 import datetime
 import random
+from datetime import timezone, timedelta
+
+KST = timezone(timedelta(hours=9))
 from google import genai
 from google.genai import types
 
@@ -18,7 +21,7 @@ def get_topic_by_category(category):
     if category == "auto":
         # 현재 시각(시 단위) 또는 확률에 따라 자동 선택
         # 짝수 시: tech, 홀수 시: dividend
-        now_hour = datetime.datetime.now().hour
+        now_hour = datetime.datetime.now(KST).hour
         category = "tech" if now_hour % 2 == 0 else "dividend"
         
     print(f"선택된 카테고리: {category.upper()}")
@@ -97,7 +100,7 @@ Frontmatter 예시:
 ---
 layout: post
 title: "생성된 매력적인 제목"
-date: YYYY-MM-DD HH:MM:SS +0900
+date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Tech, Trend]
 tags: [AI, 기술, 트렌드]
 image: "https://picsum.photos/seed/tech/800/450"
@@ -129,7 +132,7 @@ Frontmatter 예시:
 ---
 layout: post
 title: "생성된 매력적인 제목"
-date: YYYY-MM-DD HH:MM:SS +0900
+date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Dividend, Finance]
 tags: [월배당, ETF, 재테크, 주식]
 image: "https://picsum.photos/seed/finance/800/450"
@@ -161,7 +164,7 @@ def save_post(content, category):
     posts_dir = os.path.join(base_dir, "_posts")
     os.makedirs(posts_dir, exist_ok=True)
 
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(KST)
     date_str = now.strftime("%Y-%m-%d")
 
     slug = f"auto-post-{category}-{now.strftime('%H%M%S')}"

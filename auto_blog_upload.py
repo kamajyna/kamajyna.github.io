@@ -1,6 +1,9 @@
 import os
 import datetime
+from datetime import timezone, timedelta
 import subprocess
+
+KST = timezone(timedelta(hours=9))
 
 def auto_upload_blog():
     # 블로그 레포지토리 로컬 경로 (사용자 환경에 맞게 수정 필요)
@@ -17,14 +20,14 @@ def auto_upload_blog():
             f.write("# My Auto Blog\n\n자동화 블로그 레포지토리입니다.")
 
     # 오늘 날짜 기반의 포스트 파일명 생성
-    today = datetime.datetime.now()
+    today = datetime.datetime.now(KST)
     post_filename = f"{today.strftime('%Y-%m-%d')}-auto-post.md"
     post_filepath = os.path.join(repo_path, post_filename)
 
     # 포스트 내용 작성
     post_content = f"""---
 title: "자동 업로드 테스트 ({today.strftime('%Y-%m-%d')})"
-date: {today.strftime('%Y-%m-%d %H:%M:%S')}
+date: {today.strftime('%Y-%m-%d %H:%M:%S %z')}
 categories: [Update]
 tags: [auto, test]
 ---

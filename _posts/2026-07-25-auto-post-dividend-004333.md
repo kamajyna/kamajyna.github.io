@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "토스증권, 첫 절세상품 ’연금저축계좌’ 출시! 월배당 ETF 투자자가 지금 당장 주목해야 하는 이유"
-date: 2024-05-20 09:00:00 +0900
+date: 2026-07-25 09:00:00 +0900
 categories: [Finance, Tax-Saving]
 tags: [토스증권, 연금저축펀드, 절세, 월배당ETF, 재테크, 미국배당]
 image: "https://picsum.photos/seed/tossdividend/800/450"

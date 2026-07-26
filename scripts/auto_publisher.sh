@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# 설정: 블로그 디렉토리 경로
-BLOG_DIR="/Users/kongjiyun/auto-blog"
-cd $BLOG_DIR || exit
+# 설정: 블로그 디렉토리 경로 (스크립트 위치 기반)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+BLOG_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$BLOG_DIR" || exit
 
 # 가상환경 활성화 (필요한 경우)
 # source scripts/venv/bin/activate

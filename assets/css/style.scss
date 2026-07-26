@@ -33,7 +33,7 @@ a:hover {
 }
 
 .wrapper {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -127,7 +127,7 @@ a:hover {
 
 .post-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
   margin-bottom: 60px;
 }
@@ -264,7 +264,26 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* Home Split Layout */
+.home-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .home-split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Post Page */
+.post {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .post-header {
   margin-top: 40px;
   margin-bottom: 35px;

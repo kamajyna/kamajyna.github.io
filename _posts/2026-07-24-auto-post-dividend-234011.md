@@ -4,7 +4,7 @@ title: "[AAPL] 배당률 0.5%, 연 4회 분기배당! 2026년 애플 배당 & �
 date: 2026-07-24 09:00:00 +0900
 categories: [Dividend, Finance]
 tags: [애플, AAPL, 배당주, 미국주식, 배당성장주, 재테크]
-image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true"
+image: "https://image.pollinations.ai/prompt/Apple_device_modern_design_office_desk?width=800&height=450&nologo=true"
 ---
 
 

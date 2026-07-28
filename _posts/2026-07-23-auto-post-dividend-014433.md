@@ -4,7 +4,7 @@ title: "[퇴근길머니] 또다시 찾아온 '검은 금요일'과 레버리지
 date: 2026-07-23 18:00:00 +0900
 categories: [Finance, ETF]
 tags: [레버리지ETF, 검은금요일, 월배당ETF, 현금흐름, 절세재테크, ISA, 연금저축]
-image: "https://picsum.photos/seed/leveragedetf/800/450"
+image: "https://image.pollinations.ai/prompt/rollercoaster_market_bear?width=800&height=450&nologo=true"
 ---
 
 

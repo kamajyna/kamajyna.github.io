@@ -145,7 +145,7 @@ image: "https://image.pollinations.ai/prompt/artificial_intelligence,future?widt
    - 📋 **한눈에 보는 핵심 요약 표**: 주요 수치(티커, 배당률, 배당성장연수, 리스크 레벨, 목표가 등)를 마크다운 표(Table)로 정리
 4. 억측이나 주관적 감정을 배제하고 **숫자와 팩트** 위주로 전문성 있게 작성할 것. (수익률이 높든 위험하든 냉정하게 팩트만 전달)
 5. 마크다운 형식으로 작성할 것 (제목은 #, 소제목은 ##, ### 사용). 본문 내 중요 팩트는 **bold** 처리하여 가독성을 높일 것.
-6. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://image.pollinations.ai/prompt/[해당종목_티커]_stock_chart_financial_dividend?width=800&height=450&nologo=true"`. (예: KO_stock_chart_financial_dividend). 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
+6. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://image.pollinations.ai/prompt/[해당종목_관련_영어_키워드]?width=800&height=450&nologo=true"`. 여기서 '[해당종목_관련_영어_키워드]'는 해당 기업의 실제 비즈니스 모델이나 주요 제품을 잘 보여주는 구체적인 영어 단어 2~3개(예: Coca_Cola_beverage, Real_estate_skyscraper, Apple_device_modern 등)를 언더스코어로 연결해서 사용하세요. 단순한 'stock_chart'와 같은 키워드는 피하여 썸네일들이 서로 비슷해 보이지 않게 하세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
 7. 본문 최하단에는 반드시 다음 **투자 면책 조항(Disclaimer)** 문구를 포함할 것:
    `<div class="disclaimer-box"><p>*(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)*</p></div>`
 8. 응답은 Frontmatter (layout, title, date, categories, tags, image)를 포함한 완벽한 Jekyll markdown 파일 내용이어야 합니다. 마크다운 코드블록(```markdown)으로 감싸지 말고 순수 텍스트만 출력하세요.
@@ -157,7 +157,7 @@ title: "생성된 매력적인 팩트시트 제목"
 date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, 팩트시트, 재테크]
-image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true"
+image: "https://image.pollinations.ai/prompt/Apple_device_modern_design?width=800&height=450&nologo=true"
 ---
 
 내용...

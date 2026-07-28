@@ -8,7 +8,7 @@ KST = timezone(timedelta(hours=9))
 def auto_upload_blog():
     # 블로그 레포지토리 로컬 경로 (사용자 환경에 맞게 수정 필요)
     # 현재는 스크립트가 실행되는 위치를 기준으로 잡습니다.
-    repo_path = r"G:\내 드라이브\01_Projects\auto-blog" 
+    repo_path = r"G:\내 드라이브\01_Projects\01_오토블로그"
     
     # 폴더가 없으면 생성 (최초 실행 시 에러 방지)
     if not os.path.exists(repo_path):

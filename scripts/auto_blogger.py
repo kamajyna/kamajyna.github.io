@@ -208,6 +208,20 @@ def save_post(content, category):
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content.strip())
 
+    # Pre-warm image cache
+    image_url_match = re.search(r'^image:\s*"(https?://image\.pollinations\.ai/[^"]+)"', content, re.MULTILINE)
+    if image_url_match:
+        img_url = image_url_match.group(1)
+        print(f"Pre-warming image cache for: {img_url}")
+        import threading
+        import urllib.request
+        def prewarm():
+            try:
+                urllib.request.urlopen(img_url, timeout=15)
+            except Exception as e:
+                print(f"Image pre-warm failed: {e}")
+        threading.Thread(target=prewarm, daemon=True).start()
+
     print(f"새 포스트가 생성되었습니다 [{category.upper()}]: {filepath}")
     return filepath
 

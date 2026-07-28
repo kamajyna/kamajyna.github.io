@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[AAPL] 배당률 0.5%, 연 4회 분기배당! 2026년 애플 배당 & 재무 분석 팩트시트"
-date: 2026-03-30 09:00:00 +0900
+date: 2026-07-25 09:00:00 +0900
 categories: [Dividend, Finance]
 tags: [애플, AAPL, 배당주, 미국주식, 배당성장주, 재테크]
 image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend?width=800&height=450&nologo=true"
@@ -48,7 +48,7 @@ image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend
 
 ---
 
-<a id="3--재무-건전성 및 실적"></a>
+<a id="3--재무-건전성-및-실적"></a>
 ## 📊 3. 재무 건전성 및 실적
 
 배당의 지속 가능성을 평가하기 위한 핵심 재무 지표 분석 결과, 애플의 배당 여력은 전 세계 상장사 중 최고 수준의 안전성을 보유하고 있습니다.
@@ -63,7 +63,7 @@ image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend
 
 ---
 
-<a id="4--월가 애널리스트 및 전문가 총평"></a>
+<a id="4--월가-애널리스트-및-전문가-총평"></a>
 ## 🎯 4. 월가 애널리스트 및 전문가 총평
 
 ### 퀀트 분석가(Quant View) 평가
@@ -77,7 +77,7 @@ image: "https://image.pollinations.ai/prompt/AAPL_stock_chart_financial_dividend
 
 ---
 
-<a id="5--한눈에 보는 핵심 요약 표"></a>
+<a id="5--한눈에-보는-핵심-요약-표"></a>
 ## 📋 5. 한눈에 보는 핵심 요약 표
 
 | 평가 항목 | 주요 데이터 / 지표 | 비고 및 분석가 평가 |

@@ -107,7 +107,7 @@ def generate_blog_post(category, topic):
 6. 본문 내 뉴스 보도나 인물 발언 등이 언급될 경우, 해당 보도/출처 기반임을 자연스럽게 밝히고 객관적 사실과 독자적인 분석을 바탕으로 작성할 것 (저작권 및 신뢰도 준수)
 7. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://image.pollinations.ai/prompt/[핵심_영어_키워드]?width=800&height=450&nologo=true"`. 여기서 '[핵심_영어_키워드]'는 본 포스트 주제를 나타내는 2~3개의 영어 단어(예: artificial_intelligence, server_room 등)를 쉼표나 언더스코어로 연결해서 넣어주세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
 8. 본문 마지막에는 작성한 내용(주제)과 가장 연관성 높은 특정 IT 기기나 생산성 도구, 관련 서적을 추천하는 문단(HTML `<div class="partners-box">`)을 작성할 것. 
-   - 링크는 쿠팡 검색 결과 링크 포맷인 `https://link.coupang.com/a/search?q=[추천_상품_키워드]` 형식을 활용하여, 실제 검색어로 연결되도록 만들 것. (예: `q=맥북프로M3`)
+   - 링크는 쿠팡 검색 결과 링크 포맷인 `https://www.coupang.com/np/search?q=[추천_상품_키워드]` 형식을 활용하여, 실제 검색어로 연결되도록 만들 것. (예: `q=맥북프로M3`)
    - 버튼 스타일 태그(`<a href="..." class="partners-btn" target="_blank">관련 상품 최저가 확인하기</a>`)를 사용할 것.
 9. 추천 박스 바로 아래에 `<p class="partners-notice">*(이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.)*</p>` 문구를 반드시 포함할 것.
 10. 응답은 Frontmatter (layout, title, date, categories, tags, image)를 포함한 완벽한 Jekyll markdown 파일 내용이어야 합니다.

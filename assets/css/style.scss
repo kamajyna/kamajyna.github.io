@@ -32,6 +32,11 @@
   --table-zebra-bg: #f8fafc;
 }
 
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;

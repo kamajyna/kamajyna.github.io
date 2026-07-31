@@ -1,9 +1,8 @@
 name: Auto Publisher - Monthly Dividend
 
 on:
-  schedule:
-    # 주 5회 (월~금) 오전 6:00 KST (UTC 기준 일~목 21:00)
-    - cron: '0 21 * * 0-4'
+  repository_dispatch:
+    types: [trigger-dividend]
   workflow_dispatch: # 수동 실행
 
 permissions:

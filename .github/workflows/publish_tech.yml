@@ -1,9 +1,8 @@
 name: Auto Publisher - IT Tech
 
 on:
-  schedule:
-    # 주 5회 (월~금) 오후 18:00 (오후 6시) KST (UTC 기준 월~금 09:00)
-    - cron: '0 9 * * 1-5'
+  repository_dispatch:
+    types: [trigger-tech]
   workflow_dispatch: # 수동 실행
 
 permissions:

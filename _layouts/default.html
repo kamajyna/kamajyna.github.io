@@ -76,7 +76,8 @@
     .lang-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: var(--text-color);
+      opacity: 0.8;
       cursor: pointer;
       padding: 2px 4px;
       font-size: 0.85rem;
@@ -86,10 +87,12 @@
     }
     .lang-btn:hover {
       color: var(--accent-color);
+      opacity: 1;
     }
     .lang-btn.active {
       color: var(--accent-color) !important;
       font-weight: 800;
+      opacity: 1;
       text-decoration: underline;
       text-underline-offset: 4px;
     }

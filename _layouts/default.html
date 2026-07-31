@@ -34,11 +34,32 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.google_adsense }}" crossorigin="anonymous"></script>
   {%- endif -%}
   <style>
-    /* Google Translate Clean Styling */
-    iframe.goog-te-banner-frame { display: none !important; }
-    body { top: 0px !important; }
-    #google_translate_element { display: none; }
-    .goog-te-spinner-pos { display: none !important; }
+    /* Permanently Hide Google Translate Top Banner Toolbar */
+    .goog-te-banner-frame,
+    iframe.goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    div#goog-gt- {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    body {
+      top: 0px !important;
+      position: static !important;
+    }
+    .goog-text-highlight {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+    #google_translate_element,
+    .goog-te-gadget,
+    .goog-te-spinner-pos {
+      display: none !important;
+    }
     
     .lang-switcher {
       display: inline-flex;
@@ -208,8 +229,18 @@
       const match = document.cookie.match(/(?:^|;) *googtrans=([^;]*)/);
       const currentLang = match ? (match[1].split('/')[2] || 'ko') : 'ko';
       updateLangUI(currentLang);
+
+      // Continuously suppress Google Translate banner iframe & body top offset
+      setInterval(() => {
+        const frames = document.querySelectorAll('iframe.goog-te-banner-frame, .goog-te-banner-frame');
+        frames.forEach(frame => frame.remove());
+        if (document.body.style.top !== '0px' && document.body.style.top !== '') {
+          document.body.style.top = '0px';
+        }
+      }, 200);
     });
   </script>
 </body>
 </html>
+
 

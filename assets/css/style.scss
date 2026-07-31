@@ -5,9 +5,10 @@
 :root {
   /* Dark Mode (Default) */
   --bg-color: #0f1115;
+  --header-bg: rgba(15, 17, 21, 0.85);
   --surface-color: #1a1d24;
-  --text-color: #e2e8f0;
-  --text-muted: #b8c6d8;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
   --accent-color: #3b82f6;
   --accent-hover: #2563eb;
   --border-color: #2e3340;
@@ -21,15 +22,16 @@
 [data-theme="light"] {
   /* Light Mode Overrides */
   --bg-color: #f8fafc;
+  --header-bg: rgba(255, 255, 255, 0.92);
   --surface-color: #ffffff;
   --text-color: #0f172a;
-  --text-muted: #475569;
-  --accent-color: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border-color: #e2e8f0;
-  --card-glow: rgba(37, 99, 235, 0.1);
-  --table-header-bg: #f1f5f9;
-  --table-zebra-bg: #f8fafc;
+  --text-muted: #334155;
+  --accent-color: #1d4ed8;
+  --accent-hover: #1e40af;
+  --border-color: #cbd5e1;
+  --card-glow: rgba(37, 99, 235, 0.08);
+  --table-header-bg: #e2e8f0;
+  --table-zebra-bg: #f1f5f9;
 }
 
 html {
@@ -65,12 +67,13 @@ a:hover {
 /* Header */
 .site-header {
   border-bottom: 1px solid var(--border-color);
-  padding: 20px 0;
-  background-color: rgba(15, 17, 21, 0.8);
-  backdrop-filter: blur(10px);
+  padding: 16px 0;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .site-header-wrapper {
   display: flex;
@@ -86,7 +89,7 @@ a:hover {
 .site-nav .page-link {
   color: var(--text-muted);
   margin-left: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .site-nav .page-link:hover {
   color: var(--accent-color);

@@ -11,5 +11,5 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 google_analytics: G-WJH817N0CD
-google_adsense: "" # Google AdSense Publisher ID (e.g., ca-pub-XXXXXXXXXXXXXXXX)
+google_adsense: "ca-pub-9692425694108429"
 

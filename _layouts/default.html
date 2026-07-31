@@ -43,32 +43,34 @@
     .lang-switcher {
       display: inline-flex;
       align-items: center;
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2px 4px;
-      font-size: 0.75rem;
-      gap: 2px;
-      margin-right: 6px;
+      margin-left: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .lang-switcher .lang-sep {
+      margin: 0 4px;
+      opacity: 0.35;
+      color: var(--text-color);
     }
     .lang-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 3px 8px;
-      border-radius: 14px;
-      font-size: 0.75rem;
+      padding: 2px 4px;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.2s ease;
+      font-family: inherit;
     }
     .lang-btn:hover {
-      color: var(--text-color);
+      color: var(--accent-color);
     }
     .lang-btn.active {
-      background: var(--accent-color);
-      color: #ffffff !important;
-      font-weight: 700;
+      color: var(--accent-color) !important;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
   </style>
 </head>
@@ -82,10 +84,11 @@
           <a class="page-link" href="{{ "/about/" | relative_url }}">소개</a>
           <a class="page-link" href="{{ "/feed.xml" | relative_url }}" target="_blank">RSS</a>
           
-          <!-- Language Switcher (KO / EN) -->
+          <!-- Seamless Minimalist Language Switcher (KO / EN) -->
           <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">🇰🇷 KO</button>
-            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇺🇸 EN</button>
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KO</button>
+            <span class="lang-sep">/</span>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
           </div>
 
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">

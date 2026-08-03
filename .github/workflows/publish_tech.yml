@@ -1,6 +1,8 @@
 name: Auto Publisher - IT Tech
 
 on:
+  schedule:
+    - cron: '0 8 * * *' # 매일 KST 17:00 (UTC 08:00)
   repository_dispatch:
     types: [trigger-tech]
   workflow_dispatch: # 수동 실행

@@ -105,7 +105,7 @@ def generate_blog_post(category, topic):
 4. 마크다운 형식으로 작성할 것 (제목은 #, 소제목은 ##, ### 사용)
 5. 본문 내 강조할 부분은 굵은 글씨(**bold**)나 인용구(`>`)를 적극 활용하여 가독성을 높일 것
 6. 본문 내 뉴스 보도나 인물 발언 등이 언급될 경우, 해당 보도/출처 기반임을 자연스럽게 밝히고 객관적 사실과 독자적인 분석을 바탕으로 작성할 것 (저작권 및 신뢰도 준수)
-7. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://pollinations.ai/p/[핵심_영어_키워드]?width=800&height=450"`. 여기서 '[핵심_영어_키워드]'는 본 포스트 주제를 나타내는 2~3개의 영어 단어(예: artificial_intelligence, server_room 등)를 쉼표나 언더스코어로 연결해서 넣어주세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
+7. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://picsum.photos/seed/[핵심_영어_키워드]/800/450"`. 여기서 '[핵심_영어_키워드]'는 본 포스트 주제를 나타내는 2~3개의 영어 단어(예: artificial_intelligence, server_room 등)를 쉼표나 언더스코어로 연결해서 넣어주세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
 8. 본문 마지막에는 작성한 내용(주제)과 가장 연관성 높은 특정 IT 기기나 생산성 도구, 관련 서적을 추천하는 문단(HTML `<div class="partners-box">`)을 작성할 것. (내부 제목은 `<h3>`, 설명은 `<p>` 태그를 사용하고, 인라인 스타일이나 `<style>` 태그는 절대 추가하지 말 것)
    - 링크는 쿠팡 검색 결과 링크 포맷인 `https://www.coupang.com/np/search?q=[추천_상품_키워드]` 형식을 활용하여, 실제 검색어로 연결되도록 만들 것. (예: `q=맥북프로M3`)
    - 버튼 스타일 태그(`<a href="..." class="partners-btn" target="_blank">관련 상품 최저가 확인하기</a>`)를 사용할 것.
@@ -120,7 +120,7 @@ title: "생성된 매력적인 제목"
 date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Tech, Trend]
 tags: [AI, 기술, 트렌드]
-image: "https://pollinations.ai/p/artificial_intelligence,future?width=800&height=450"
+image: "https://picsum.photos/seed/artificial_intelligence_future/800/450"
 ---
 
 내용...
@@ -145,9 +145,9 @@ image: "https://pollinations.ai/p/artificial_intelligence,future?width=800&heigh
    - 📋 **한눈에 보는 핵심 요약 표**: 주요 수치(티커, 배당률, 배당성장연수, 리스크 레벨, 목표가 등)를 마크다운 표(Table)로 정리
 4. 억측이나 주관적 감정을 배제하고 **숫자와 팩트** 위주로 전문성 있게 작성할 것. (수익률이 높든 위험하든 냉정하게 팩트만 전달)
 5. 마크다운 형식으로 작성할 것 (제목은 #, 소제목은 ##, ### 사용). 본문 내 중요 팩트는 **bold** 처리하여 가독성을 높일 것.
-6. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://pollinations.ai/p/[해당종목_관련_영어_키워드]?width=800&height=450"`. 여기서 '[해당종목_관련_영어_키워드]'는 해당 기업의 실제 비즈니스 모델이나 주요 제품을 잘 보여주는 구체적인 영어 단어 2~3개(예: Coca_Cola_beverage, Real_estate_skyscraper, Apple_device_modern 등)를 언더스코어로 연결해서 사용하세요. 단순한 'stock_chart'와 같은 키워드는 피하여 썸네일들이 서로 비슷해 보이지 않게 하세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
+6. Frontmatter에 대표 썸네일 이미지 URL을 다음 형식으로 작성할 것: `image: "https://picsum.photos/seed/[해당종목_관련_영어_키워드]/800/450"`. 여기서 '[해당종목_관련_영어_키워드]'는 해당 기업의 실제 비즈니스 모델이나 주요 제품을 잘 보여주는 구체적인 영어 단어 2~3개(예: Coca_Cola_beverage, Real_estate_skyscraper, Apple_device_modern 등)를 언더스코어로 연결해서 사용하세요. 단순한 'stock_chart'와 같은 키워드는 피하여 썸네일들이 서로 비슷해 보이지 않게 하세요. 절대 본문(내용) 안에는 이미지를 마크다운 문법으로 중복 삽입하지 마세요.
 7. 본문 최하단에는 반드시 다음 **투자 면책 조항(Disclaimer)** 문구를 포함할 것:
-   `<div class="disclaimer-box"><p>*(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)*</p></div>`
+   `<div class="disclaimer-box"><p><em>(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)</em></p></div>`
 8. 응답은 Frontmatter (layout, title, date, categories, tags, image)를 포함한 완벽한 Jekyll markdown 파일 내용이어야 합니다. 마크다운 코드블록(```markdown)으로 감싸지 말고 순수 텍스트만 출력하세요.
 
 Frontmatter 예시:
@@ -157,7 +157,7 @@ title: "생성된 매력적인 팩트시트 제목"
 date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, 팩트시트, 재테크]
-image: "https://pollinations.ai/p/Apple_device_modern_design?width=800&height=450"
+image: "https://picsum.photos/seed/Apple_device_modern_design/800/450"
 ---
 
 내용...
@@ -209,7 +209,7 @@ def save_post(content, category):
         f.write(content.strip())
 
     # Pre-warm image cache
-    image_url_match = re.search(r'^image:\s*"(https?://pollinations\.ai/p/[^"]+)"', content, re.MULTILINE)
+    image_url_match = re.search(r'^image:\s*"(https?://picsum\.photos/seed/[^"]+)"', content, re.MULTILINE)
     if image_url_match:
         img_url = image_url_match.group(1)
         print(f"Pre-warming image cache for: {img_url}")

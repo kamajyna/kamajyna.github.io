@@ -477,12 +477,18 @@ html:not([data-theme="light"]) .moon-icon {
   color: #cbd5e1;
 }
 
+[data-theme="light"] .post-content blockquote {
+  background-color: rgba(30, 41, 59, 0.05);
+  color: var(--text-color);
+}
+
 .post-content pre {
   background-color: #0b0c10;
   padding: 18px;
   border-radius: 10px;
   overflow-x: auto;
   border: 1px solid var(--border-color);
+  color: #e2e8f0;
 }
 
 /* Premium Table Styling (factsheet reports) */

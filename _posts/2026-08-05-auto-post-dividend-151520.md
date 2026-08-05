@@ -4,7 +4,7 @@ title: "[AGNC] 연 14%대 월배당의 실체! 순자산(NAV) 침식과 배당 �
 date: 2026-08-05 15:15:20 +0900
 categories: [Dividend, Finance]
 tags: [AGNC, 리츠, 월배당, 미국주식, 배당주분석, 모기지리츠]
-image: "https://pollinations.ai/p/US_Mortgage_Back_Securities_Houses_Finance?width=800&height=450"
+image: "https://picsum.photos/seed/AGNC_mortgage_finance/800/450"
 ---
 
 * TOC

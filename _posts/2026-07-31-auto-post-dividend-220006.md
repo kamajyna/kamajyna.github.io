@@ -4,7 +4,7 @@ title: "[JEPQ] 배당수익률 연 9.8% 월배당! JEPQ ETF 구조와 2026년 �
 date: 2026-07-31 22:00:06 +0900
 categories: [Dividend, Finance]
 tags: [JEPQ, 미국주식, 월배당, 배당주, 커버드콜, 재테크]
-image: "https://image.pollinations.ai/prompt/Nasdaq_tech_stock_financial_data?width=800&height=450&nologo=true"
+image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=800&auto=format&fit=crop"
 ---
 
 * TOC

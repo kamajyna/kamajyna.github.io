@@ -38,12 +38,29 @@ def get_topic_by_category(category):
             "개발자와 기획자를 위한 생성형 AI 프롬프트 엔지니어링 실전 가이드"
         ]
 
+        import re
+        noise_pattern = re.compile(
+            r'(?:\[부음\]|\[부고\]|\[인사\]|\[동정\]|조모상|빙부상|빙모상|시모상|조부상|부고소식|'
+            r'(?:^|[\s\(\[\-])(?:부음|부고|인사|동정|사망)(?:$|[\s\)\]\-]|\b))', 
+            re.IGNORECASE
+        )
+
         articles = []
         for url in rss_urls:
             try:
                 feed = feedparser.parse(url)
-                for entry in feed.entries[:5]:  # 피드당 상위 5개
-                    articles.append(entry.title)
+                if getattr(feed, 'bozo', 0) and not feed.entries:
+                    print(f"RSS 피드 오류 ({url})")
+                    continue
+                for entry in feed.entries[:10]:
+                    title = getattr(entry, 'title', '').strip()
+                    if not title:
+                        continue
+                    # 노이지/부적절 키워드 정밀 제외 (인사이트 등 오탐 방지)
+                    if noise_pattern.search(title):
+                        print(f"제외된 노이즈 기사: {title}")
+                        continue
+                    articles.append(title)
             except Exception as e:
                 print(f"RSS 파싱 에러 ({url}): {e}")
 
@@ -175,11 +192,15 @@ image: "https://picsum.photos/seed/Apple_device_modern_design/800/450"
                     temperature=0.7,
                 )
             )
-            return response.text.strip()
+            text = (getattr(response, "text", None) or "").strip()
+            if len(text) < 300:
+                print(f"Model {model_name} output too short ({len(text)} chars), trying fallback...")
+                continue
+            return text
         except Exception as e:
             print(f"Model {model_name} failed ({e}), trying fallback...")
             last_err = e
-    raise last_err
+    raise last_err or RuntimeError("All models failed to generate content")
 
 def save_post(content, category):
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -193,17 +214,38 @@ def save_post(content, category):
     filename = f"{date_str}-{slug}.md"
     filepath = os.path.join(posts_dir, filename)
 
-    if content.startswith("```markdown"):
-        content = content[11:]
-    if content.startswith("```"):
-        content = content[3:]
-    if content.endswith("```"):
-        content = content[:-3]
-
     import re
-    # LLM이 임의로 생성한 date 필드를 현재 KST 시간으로 강제 덮어쓰기
+    content = content.strip()
+    content = re.sub(r'^```[a-zA-Z]*[ \t]*\n?', '', content)
+    if content.endswith("```"):
+        content = content[:-3].strip()
+
+    # Front Matter 보정 및 닫는 --- 검증
+    parts = content.split("---")
+    if len(parts) >= 3 and not parts[0].strip():
+        # 정상적으로 --- 로 시작하고 닫는 --- 가 존재하는 구조
+        fm_text = parts[1].strip()
+        body_text = "---".join(parts[2:]).lstrip("\n")
+    else:
+        # Front Matter 경계가 파손된 경우 보정
+        fm_text = f"layout: post\ntitle: \"Auto Post\"\ncategories: [{category.capitalize()}]"
+        body_text = content
+
+    # Front Matter 각 라인의 선행 공백 제거
+    fm_text = "\n".join(line.strip() for line in fm_text.splitlines() if line.strip())
+
+    # Front Matter 내부 키-값 짝에 줄바꿈 보장 (값 내부 미분할 보장)
+    fm_keys = ["layout:", "title:", "date:", "categories:", "tags:", "image:"]
+    for key in fm_keys:
+        fm_text = re.sub(r'([^\n])[ \t]+(' + re.escape(key) + r')', r'\1\n\2', fm_text)
+    
+    # LLM이 임의로 생성한 date 필드를 현재 KST 시간으로 강제 덮어쓰기 (행단위 정밀 매칭)
     current_time_str = now.strftime('%Y-%m-%d %H:%M:%S') + " +0900"
-    content = re.sub(r'^[ \t]*date:\s*.*$', f"date: {current_time_str}", content, flags=re.MULTILINE | re.IGNORECASE)
+    fm_text, n = re.subn(r'^[ \t]*date:[^\n]*$', f"date: {current_time_str}", fm_text, flags=re.MULTILINE | re.IGNORECASE)
+    if n == 0:
+        fm_text += f"\ndate: {current_time_str}"
+        
+    content = f"---\n{fm_text.strip()}\n---\n\n{body_text.strip()}"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content.strip())

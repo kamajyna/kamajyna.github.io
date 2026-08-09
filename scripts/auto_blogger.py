@@ -74,29 +74,115 @@ def get_topic_by_category(category):
             return category, topic
 
     else:  # dividend / finance
-        dividend_stocks = [
-            # 초우량 안정형 배당주
-            "코카콜라 (KO)", "리얼티 인컴 (O)", "존슨앤존슨 (JNJ)", "애플 (AAPL)", 
-            "마이크로소프트 (MSFT)", "스타벅스 (SBUX)", "맥도날드 (MCD)", "프록터앤갬블 (PG)", 
-            "엑슨모빌 (XOM)", "셰브론 (CVX)", "애비브 (ABBV)", "화이자 (PFE)", 
-            "홈디포 (HD)", "록히드마틴 (LMT)", "텍사스 인스트루먼트 (TXN)", "코스트코 (COST)",
-            "제이피모건체이스 (JPM)", "뱅크오브아메리카 (BAC)",
+        dividend_stocks_data = [
+            # 초우량 / 배당성장
+            {"ticker": "KO", "name": "코카콜라 (KO)", "keywords": ["KO", "코카콜라"]},
+            {"ticker": "O", "name": "리얼티 인컴 (O)", "keywords": ["리얼티 인컴", "리얼티인컴", "Realty Income"]},
+            {"ticker": "JNJ", "name": "존슨앤존슨 (JNJ)", "keywords": ["JNJ", "존슨앤존슨", "존슨앤드존슨"]},
+            {"ticker": "AAPL", "name": "애플 (AAPL)", "keywords": ["AAPL", "애플"]},
+            {"ticker": "MSFT", "name": "마이크로소프트 (MSFT)", "keywords": ["MSFT", "마이크로소프트"]},
+            {"ticker": "SBUX", "name": "스타벅스 (SBUX)", "keywords": ["SBUX", "스타벅스"]},
+            {"ticker": "MCD", "name": "맥도날드 (MCD)", "keywords": ["MCD", "맥도날드"]},
+            {"ticker": "PG", "name": "프록터앤갬블 (PG)", "keywords": ["PG", "프록터앤갬블", "프록터 & 갬블"]},
+            {"ticker": "XOM", "name": "엑슨모빌 (XOM)", "keywords": ["XOM", "엑슨모빌"]},
+            {"ticker": "CVX", "name": "셰브론 (CVX)", "keywords": ["CVX", "셰브론"]},
+            {"ticker": "ABBV", "name": "애비브 (ABBV)", "keywords": ["ABBV", "애비브"]},
+            {"ticker": "PFE", "name": "화이자 (PFE)", "keywords": ["PFE", "화이자"]},
+            {"ticker": "HD", "name": "홈디포 (HD)", "keywords": ["HD", "홈디포"]},
+            {"ticker": "LMT", "name": "록히드마틴 (LMT)", "keywords": ["LMT", "록히드마틴"]},
+            {"ticker": "TXN", "name": "텍사스 인스트루먼트 (TXN)", "keywords": ["TXN", "텍사스 인스트루먼트", "텍사스인스트루먼트"]},
+            {"ticker": "COST", "name": "코스트코 (COST)", "keywords": ["COST", "코스트코"]},
+            {"ticker": "JPM", "name": "제이피모건체이스 (JPM)", "keywords": ["JPM", "제이피모건", "JP모건"]},
+            {"ticker": "BAC", "name": "뱅크오브아메리카 (BAC)", "keywords": ["BAC", "뱅크오브아메리카"]},
+            {"ticker": "PEP", "name": "펩시코 (PEP)", "keywords": ["PEP", "펩시코"]},
+            {"ticker": "CSCO", "name": "시스코 시스템즈 (CSCO)", "keywords": ["CSCO", "시스코"]},
+            {"ticker": "AVGO", "name": "브로드컴 (AVGO)", "keywords": ["AVGO", "브로드컴"]},
+            {"ticker": "QCOM", "name": "퀄컴 (QCOM)", "keywords": ["QCOM", "퀄컴"]},
             
-            # 고배당 / 리츠 / BDC / 통신 / 담배 (리스크 포함 종목)
-            "AT&T (T)", "버라이즌 (VZ)", "알트리아 (MO)", "브리티시 아메리칸 토바코 (BTI)",
-            "아레스 캐피탈 (ARCC)", "메인 스트리트 캐피탈 (MAIN)", "프로스펙트 캐피탈 (PSEC)",
-            "에이전시 인베스트먼트 (AGNC)", "아머 레지덴셜 리츠 (ARR)", "스타우드 프로퍼티 (STWD)",
-            "오메가 헬스케어 (OHI)", "메디컬 프로퍼티즈 트러스트 (MPW)", "W.P. 캐리 (WPC)",
-            "엔터프라이즈 프로덕츠 파트너스 (EPD)",
+            # 고배당 / 리츠 / BDC / 통신 / 에너지 / 모기지
+            {"ticker": "T", "name": "AT&T (T)", "keywords": ["AT&T", "AT and T"]},
+            {"ticker": "VZ", "name": "버라이즌 (VZ)", "keywords": ["VZ", "버라이즌"]},
+            {"ticker": "MO", "name": "알트리아 (MO)", "keywords": ["MO", "알트리아"]},
+            {"ticker": "BTI", "name": "브리티시 아메리칸 토바코 (BTI)", "keywords": ["BTI", "브리티시 아메리칸 토바코", "브리티시아메리칸"]},
+            {"ticker": "ARCC", "name": "아레스 캐피탈 (ARCC)", "keywords": ["ARCC", "아레스 캐피탈", "아레스캐피탈"]},
+            {"ticker": "MAIN", "name": "메인 스트리트 캐피탈 (MAIN)", "keywords": ["MAIN", "메인 스트리트", "메인스트리트"]},
+            {"ticker": "PSEC", "name": "프로스펙트 캐피탈 (PSEC)", "keywords": ["PSEC", "프로스펙트 캐피탈", "프로스펙트캐피탈"]},
+            {"ticker": "AGNC", "name": "에이전시 인베스트먼트 (AGNC)", "keywords": ["AGNC", "에이전시 인베스트먼트", "에이전시인베스트먼트"]},
+            {"ticker": "ARR", "name": "아머 레지덴셜 리츠 (ARR)", "keywords": ["ARR", "아머 레지덴셜", "아머레지덴셜"]},
+            {"ticker": "STWD", "name": "스타우드 프로퍼티 (STWD)", "keywords": ["STWD", "스타우드 프로퍼티", "스타우드프로퍼티"]},
+            {"ticker": "OHI", "name": "오메가 헬스케어 (OHI)", "keywords": ["OHI", "오메가 헬스케어", "오메가헬스케어"]},
+            {"ticker": "MPW", "name": "메디컬 프로퍼티즈 트러스트 (MPW)", "keywords": ["MPW", "메디컬 프로퍼티즈", "메디컬프로퍼티즈"]},
+            {"ticker": "WPC", "name": "W.P. 캐리 (WPC)", "keywords": ["WPC", "W.P. 캐리", "W.P.캐리", "WP 캐리"]},
+            {"ticker": "EPD", "name": "엔터프라이즈 프로덕츠 파트너스 (EPD)", "keywords": ["EPD", "엔터프라이즈 프로덕츠"]},
+            {"ticker": "EQIX", "name": "에퀴닉스 (EQIX)", "keywords": ["EQIX", "에퀴닉스"]},
+            {"ticker": "AMT", "name": "아메리칸 타워 (AMT)", "keywords": ["AMT", "아메리칸 타워"]},
+            {"ticker": "VICI", "name": "비시 프로퍼티스 (VICI)", "keywords": ["VICI", "비시 프로퍼티스", "VICI Properties"]},
             
-            # 고배당 / 커버드콜 / ETF
-            "슈와브 US 디비던드 에퀴티 (SCHD)", "JP모건 에퀴티 프리미엄 인컴 (JEPI)",
-            "JP모건 나스닥 에퀴티 프리미엄 (JEPQ)", "Global X 나스닥 100 커버드콜 (QYLD)",
-            "Global X 슈퍼디비던드 (SDIV)", "일드맥스 TSLA 옵션 인컴 (TSLY)"
+            # 고배당 / 커버드콜 / 배당 ETF
+            {"ticker": "SCHD", "name": "슈와브 US 디비던드 에퀴티 (SCHD)", "keywords": ["SCHD", "슈와브 US", "Schwab U.S. Dividend"]},
+            {"ticker": "JEPI", "name": "JP모건 에퀴티 프리미엄 인컴 (JEPI)", "keywords": ["JEPI", "JP모건 에퀴티 프리미엄"]},
+            {"ticker": "JEPQ", "name": "JP모건 나스닥 에퀴티 프리미엄 (JEPQ)", "keywords": ["JEPQ", "JP모건 나스닥 에퀴티"]},
+            {"ticker": "QYLD", "name": "Global X 나스닥 100 커버드콜 (QYLD)", "keywords": ["QYLD", "Global X 나스닥"]},
+            {"ticker": "SDIV", "name": "Global X 슈퍼디비던드 (SDIV)", "keywords": ["SDIV", "슈퍼디비던드"]},
+            {"ticker": "TSLY", "name": "일드맥스 TSLA 옵션 인컴 (TSLY)", "keywords": ["TSLY", "일드맥스 TSLA", "YieldMax TSLA"]},
+            {"ticker": "NVDY", "name": "일드맥스 NVDA 옵션 인컴 (NVDY)", "keywords": ["NVDY", "일드맥스 NVDA", "YieldMax NVDA"]},
+            {"ticker": "VYM", "name": "뱅가드 하이 디비던드 (VYM)", "keywords": ["VYM", "뱅가드 하이 디비던드"]},
+            {"ticker": "DVY", "name": "iShares Select Dividend (DVY)", "keywords": ["DVY", "iShares Select Dividend"]}
         ]
-        stock = random.choice(dividend_stocks)
+
+        # _posts 디렉토리 경로
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        posts_dir = os.path.join(base_dir, "_posts")
+
+        # 최근 포스팅 기록 파싱
+        import glob
+        import re
+
+        stock_last_dates = {item["ticker"]: None for item in dividend_stocks_data}
+        if os.path.exists(posts_dir):
+            post_files = glob.glob(os.path.join(posts_dir, "*.md"))
+            for file_path in post_files:
+                try:
+                    filename = os.path.basename(file_path)
+                    date_match = re.match(r'^(\d{4}-\d{2}-\d{2})', filename)
+                    if not date_match:
+                        continue
+                    post_date_str = date_match.group(1)
+
+                    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                        content = f.read()
+
+                    for item in dividend_stocks_data:
+                        ticker = item["ticker"]
+                        keywords = item["keywords"]
+                        for kw in keywords:
+                            if kw.lower() in content.lower():
+                                if stock_last_dates[ticker] is None or post_date_str > stock_last_dates[ticker]:
+                                    stock_last_dates[ticker] = post_date_str
+                                break
+                except Exception as e:
+                    pass
+
+        # Round-Robin / LRU (Least Recently Used) 선택 알고리즘
+        # 1. 포스팅 이력이 없는(None) 종목 후보군
+        never_posted = [item for item in dividend_stocks_data if stock_last_dates[item["ticker"]] is None]
+
+        if never_posted:
+            selected_item = random.choice(never_posted)
+            print(f"신규 종목 선택 (포스팅 이력 없음) [{category.upper()}]: {selected_item['name']}")
+        else:
+            # 2. 모든 종목이 1회 이상 작성된 경우, 가장 오래전에 작성된 일자 탐색
+            min_date = min(stock_last_dates[item["ticker"]] for item in dividend_stocks_data)
+            oldest_candidates = [
+                item for item in dividend_stocks_data 
+                if stock_last_dates[item["ticker"]] == min_date
+            ]
+            selected_item = random.choice(oldest_candidates)
+            print(f"Round-Robin / LRU 순환 선택 (마지막 작성일: {min_date}) [{category.upper()}]: {selected_item['name']}")
+
+        stock = selected_item["name"]
         topic = f"{stock} 배당 및 재무 분석 팩트시트"
-        print(f"랜덤 선정된 배당주 [{category.upper()}]: {topic}")
+        print(f"최종 결정된 배당주 주제: {topic}")
         return category, topic
 
 def generate_blog_post(category, topic):

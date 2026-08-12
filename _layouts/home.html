@@ -11,7 +11,15 @@ layout: default
         <div class="post-grid">
           {%- for post in site.posts -%}
             {%- if post.categories contains 'Finance' or post.categories contains 'Dividend' or post.categories contains 'ETF' -%}
-              {%- assign post_thumb = post.image | default: post.thumbnail -%}
+              {%- assign post_thumb = nil -%}
+              {%- if post.image.path -%}
+                {%- assign post_thumb = post.image.path -%}
+              {%- elsif post.image -%}
+                {%- assign post_thumb = post.image -%}
+              {%- elsif post.thumbnail -%}
+                {%- assign post_thumb = post.thumbnail -%}
+              {%- endif -%}
+
               {%- if post_thumb == nil or post_thumb == "" -%}
                 {%- if post.content contains "](" -%}
                   {%- assign parts = post.content | split: "](" -%}
@@ -61,7 +69,15 @@ layout: default
         <div class="post-grid">
           {%- for post in site.posts -%}
             {%- if post.categories contains 'Tech' or post.categories contains 'Trend' or post.categories contains 'IT' -%}
-              {%- assign post_thumb = post.image | default: post.thumbnail -%}
+              {%- assign post_thumb = nil -%}
+              {%- if post.image.path -%}
+                {%- assign post_thumb = post.image.path -%}
+              {%- elsif post.image -%}
+                {%- assign post_thumb = post.image -%}
+              {%- elsif post.thumbnail -%}
+                {%- assign post_thumb = post.thumbnail -%}
+              {%- endif -%}
+
               {%- if post_thumb == nil or post_thumb == "" -%}
                 {%- if post.content contains "](" -%}
                   {%- assign parts = post.content | split: "](" -%}
@@ -105,3 +121,4 @@ layout: default
     </div>
   </div>
 </div>
+

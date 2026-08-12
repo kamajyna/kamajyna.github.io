@@ -4,7 +4,7 @@ title: "[JEPI] 연 8%대 월배당의 실체! 2026년 배당 및 재무 구조 �
 date: 2026-08-10 07:03:20 +0900
 categories: [Dividend, Finance]
 tags: [JEPI, 배당주, 미국주식, 커버드콜, 월배당, 팩트시트]
-image: "https://picsum.photos/seed/JPMorgan_finance_wealth/800/450"
+image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop"
 ---
 
 * TOC

@@ -5,8 +5,8 @@ date: 2026-08-13 06:38:17 +0900
 categories: [Dividend, Finance]
 tags: [VYM, 배당주, 미국ETF, 뱅가드, 배당팩트시트]
 image: "https://picsum.photos/seed/Vanguard_Financial_Growth/800/450"
+description: "VYM의 캐시플로우 창출 메커니즘은 매우 직관적입니다. 커버드콜 옵션 전략이나 부채 기반 펀딩을 활용하는 고위험 구조(BDC, 모기지 리츠 등)와 달리, **미국 우량 대형주 약..."
 ---
-
 * TOC
 {:toc}
 

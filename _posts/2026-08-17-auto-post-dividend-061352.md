@@ -5,8 +5,8 @@ date: 2026-08-17 06:13:52 +0900
 categories: [Dividend, ETF]
 tags: [SDIV, 월배당ETF, 고배당주, 글로벌배당, 미국주식, 재테크]
 image: "https://picsum.photos/seed/Global_Dividend_Yield_Finance/800/450"
+description: "🏢 **기업 개요 및 비즈니스 모델** ====================================== SDIV의 비즈니스 모델은 고유의 사업 운영을 통해 직접 현금흐름을 창..."
 ---
-
 * TOC
 {:toc}
 

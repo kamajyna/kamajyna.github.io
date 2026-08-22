@@ -5,8 +5,8 @@ date: 2026-07-30 08:05:20 +0900
 categories: [Dividend, Finance]
 tags: [ARR, 아머레지덴셜, 미국주식, 모기지리츠, 월배당, 배당주분석]
 image: "https://image.pollinations.ai/prompt/Residential_Mortgage_Finance_Building?width=800&height=450&nologo=true"
+description: "아머 레지덴셜 리츠(ARR)는 초고배당 수익률을 제공하지만, 구조적인 재무 리스크를 수반하므로 냉정한 팩트 확인이 필수적입니다.   * 월가 분석가들은 ARR의 고배당이 자본금 침..."
 ---
-
 * TOC
 {:toc}
 

@@ -5,8 +5,8 @@ date: 2026-08-19 06:17:05 +0900
 categories: [Dividend, Finance]
 tags: [셰브론, CVX, 배당주, 미국주식, 배당귀족주, 정유주, 팩트시트]
 image: "https://picsum.photos/seed/Chevron_oil_rig_energy/800/450"
+description: "셰브론의 비즈니스 모델은 크게 **업스트림(Upstream)**, **다운스트림(Downstream)**, **미드스트림(Midstream)**의 3대 축으로 구분되며, 각 부문에..."
 ---
-
 * TOC
 {:toc}
 

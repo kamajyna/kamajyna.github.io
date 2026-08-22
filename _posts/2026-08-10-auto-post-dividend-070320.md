@@ -5,8 +5,8 @@ date: 2026-08-10 07:03:20 +0900
 categories: [Dividend, Finance]
 tags: [JEPI, 배당주, 미국주식, 커버드콜, 월배당, 팩트시트]
 image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop"
+description: "JEPI의 수익 및 배당 재원은 크게 두 가지 메커니즘을 통해 발생합니다. 1. **저변동성 주식 포트폴리오 (약 80~85%)**: S&P 500 지수 구성 종목 중 변동성이 낮..."
 ---
-
 * TOC
 {:toc}
 

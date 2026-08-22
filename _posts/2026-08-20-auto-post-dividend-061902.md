@@ -5,8 +5,8 @@ date: 2026-08-20 06:19:02 +0900
 categories: [Dividend, Finance]
 tags: [ARCC, 아레스캐피탈, BDC, 배당주, 미국주식, 고배당]
 image: "https://picsum.photos/seed/Corporate_finance_investment_banking/800/450"
+description: "🏢 기업 개요 및 비즈니스 모델 BDC는 미국 법상 이익의 **90% 이상을 주주에게 배당금으로 지급**할 경우 법인세 면제 혜택을 받는 특수 구조를 갖추고 있습니다. 따라서 아레..."
 ---
-
 * TOC
 {:toc}
 

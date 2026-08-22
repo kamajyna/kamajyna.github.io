@@ -5,8 +5,8 @@ date: 2026-08-07 08:42:55 +0900
 categories: [Dividend, RealEstate]
 tags: [WPC, WP캐리, 배당주, 리츠, 미국주식, 팩트시트]
 image: "https://picsum.photos/seed/Warehouse_logistics_realestate/800/450"
+description: "W.P. 캐리는 오피스 철수 과정에서 배당금을 한 차례 리셋(Reset)한 후, 낮아진 배당 기준선 위에서 다시 지속적인 분기별 인상을 재개하고 있습니다. 수량분석가(Quant)의..."
 ---
-
 * TOC
 {:toc}
 

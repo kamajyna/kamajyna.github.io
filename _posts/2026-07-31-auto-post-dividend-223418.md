@@ -5,8 +5,8 @@ date: 2026-07-31 22:34:18 +0900
 categories: [Dividend, Finance]
 tags: [코스트코, COST, 배당주, 미국주식, 특별배당, 팩트시트]
 image: "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?q=80&w=800&auto=format&fit=crop"
+description: "🏢 **기업 개요 및 비즈니스 모델** 코스트코 홀세일(Costco Wholesale Corporation, 티커: **COST**)은 글로벌 대형 창고형 할인매장을 운영하는 유통..."
 ---
-
 * TOC
 {:toc}
 

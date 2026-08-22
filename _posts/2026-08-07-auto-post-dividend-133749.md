@@ -5,8 +5,8 @@ date: 2026-08-07 13:37:49 +0900
 categories: [Dividend, Finance]
 tags: [MPW, 메디컬프로퍼티즈트러스트, 미국주식, 배당주, 리츠, 고배당주]
 image: "https://picsum.photos/seed/Medical_hospital_building/800/450"
+description: "🏢 기업 개요 및 비즈니스 모델 💰 핵심 배당 팩트 MPW의 현재 주요 배당 지표는 다음과 같습니다. (최근 시장 주가 및 조정 공시 기준) 📊 재무 건전성 및 리스크(Risk)..."
 ---
-
 * TOC
 {:toc}
 

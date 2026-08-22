@@ -5,8 +5,8 @@ date: 2026-08-21 06:21:54 +0900
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, 록히드마틴, LMT, 방산주, 배당성장주]
 image: "https://picsum.photos/seed/Lockheed_Martin_fighter_jet/800/450"
+description: "록히드마틴(Lockheed Martin, Ticker: **LMT**)은 세계 최대의 첨단 항공우주 및 국방 기술 기업입니다. 주요 비즈니스는 크게 4가지 사업부(항공, 미사일 및..."
 ---
-
 * TOC
 {:toc}
 

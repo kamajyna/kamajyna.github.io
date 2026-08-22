@@ -5,8 +5,8 @@ date: 2026-07-29 09:03:44 +0900
 categories: [Dividend, Finance]
 tags: [JEPQ, 월배당, 커버드콜, 미국주식, 배당ETF, 재테크]
 image: "https://image.pollinations.ai/prompt/Nasdaq_technology_stock_trading_screen?width=800&height=450&nologo=true"
+description: "JEPQ의 현금 창출 매커니즘은 단순 주식 배당금 수취에 그치지 않으며, 크게 두 가지 엔진으로 작동합니다. 1. **기초 자산 포트폴리오(펀더멘털 주식 보유)**: JP모건의 자..."
 ---
-
 * TOC
 {:toc}
 

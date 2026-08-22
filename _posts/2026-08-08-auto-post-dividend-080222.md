@@ -5,8 +5,8 @@ date: 2026-08-08 08:02:22 +0900
 categories: [Dividend, Finance]
 tags: [JPM, 제이피모건, 미국배당주, 금융주, 배당성장주, 팩트시트]
 image: "https://picsum.photos/seed/JPMorgan_banking_wallstreet/800/450"
+description: "제이피모건의 주요 수익원 및 배당 재원 창출 구조는 크게 4가지 핵심 사업 부문으로 나뉩니다: 1. **소비자 및 커뮤니티 금융 (CCB)**: 예금, 신용카드, 주택담보대출, 자..."
 ---
-
 * TOC
 {:toc}
 

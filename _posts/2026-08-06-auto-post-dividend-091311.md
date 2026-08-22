@@ -5,8 +5,8 @@ date: 2026-08-06 09:13:11 +0900
 categories: [Dividend, Finance]
 tags: [존슨앤존슨, JNJ, 미국배당주, 배당킹, 팩트시트, 재테크]
 image: "https://picsum.photos/seed/Johnson_Johnson_healthcare_pharma/800/450"
+description: "존슨앤존슨(Johnson & Johnson, Ticker: **JNJ**)은 1886년에 설립되어 135년 이상의 역사를 자랑하는 글로벌 종합 헬스케어 기업입니다. 2023년 소비..."
 ---
-
 * TOC
 {:toc}
 

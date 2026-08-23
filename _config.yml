@@ -1,7 +1,8 @@
 title: Daily Insights
-email: your-email@example.com
+email: kamajyna@gmail.com
+author: Apollon AI Research Team
 description: >- # this means to ignore newlines until "baseurl:"
-  A daily collection of trends and insights.
+  매일 업데이트되는 글로벌 테크 트렌드, AI 생산성 가이드, 미국 우량주 및 ETF 배당 재무 팩트시트를 제공하는 데일리 전문 인사이트 블로그입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kamajyna.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # theme: minima

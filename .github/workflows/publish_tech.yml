@@ -38,6 +38,10 @@ jobs:
           fi
           python scripts/auto_blogger.py --category tech
 
+      - name: Run Sentinel Health & Quality Check
+        run: |
+          python scripts/monitor_autoblog_health.py
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"

@@ -1,0 +1,104 @@
+{
+  "last_updated": "2026-08-12T19:38:30.000000",
+  "total_count": 7,
+  "topics": [
+    {
+      "id": "TOPIC-2026-001",
+      "category": "미국 배당주 / 금융",
+      "title": "2026 하반기 고배당 ETF 대표주 SCHD vs JEPI 수익률 및 분배금 비교 분석",
+      "target_keywords": [
+        "SCHD 배당금",
+        "JEPI 배당수익률",
+        "미국 고배당 ETF",
+        "2026 배당주 투자 strategy"
+      ],
+      "eeat_angle": "실제 배당 히스토리 시각화 차트 및 월배당 재투자 복리 효과 수치 제시",
+      "priority": "HIGH",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-002",
+      "category": "AI 기술 & 에이전틱 오토메이션",
+      "title": "구글 Gemini 3.6 Flash & Claude CLI를 연동한 차세대 AI 오토블로그 구축 가이드",
+      "target_keywords": [
+        "Gemini 3.6 Flash",
+        "Claude CLI 자동화",
+        "AI 블로그 자동화",
+        "Agentic Workflow"
+      ],
+      "eeat_angle": "실제 파이썬 자동 배포 코드 스니펫 제공 및 멀티 모델 에이전트 아키텍처 다이어그램 포함",
+      "priority": "HIGH",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-003",
+      "category": "미국 배당주 / 금융",
+      "title": "월배당 대장주 리얼티인컴(O) 주가 전망 및 2026년 금리 환경에 따른 투자 전략",
+      "target_keywords": [
+        "리얼티인컴 주가",
+        "Realty Income 배당",
+        "미국 리츠 주식",
+        "월배당 포트폴리오"
+      ],
+      "eeat_angle": "리츠(REITs) AFFO 배당 지급 여력 수치 분석 및 금리 인하 수혜 가능성 정밀 진단",
+      "priority": "MEDIUM",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-004",
+      "category": "소셜 마케팅 & 자동화",
+      "title": "단 1개의 블로그 글을 인스타그램, X, Threads 옴니채널 포맷으로 자동 변환하는 방법",
+      "target_keywords": [
+        "옴니채널 마케팅",
+        "SNS 콘텐츠 자동 변환",
+        "카드뉴스 AI 생성",
+        "Auto Publishing"
+      ],
+      "eeat_angle": "플랫폼별 알고리즘 호환 텍스트 템플릿과 자동 변환 파이썬 스크립트 예시 공유",
+      "priority": "MEDIUM",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-005",
+      "category": "빅테크 & 반도체 주식",
+      "title": "2027 AI 반도체 세대교체 전망: 엔비디아 vs 엔비디아 대체 칩 생태계 분석",
+      "target_keywords": [
+        "엔비디아 주가 전망",
+        "AI 칩 시장",
+        "반도체 관련주",
+        "AI 하드웨어 수혜주"
+      ],
+      "eeat_angle": "글로벌 테크 기업들의 자체 ASIC 칩 도입 현황 비교 및 밸류체인 체크리스트 제공",
+      "priority": "HIGH",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-006",
+      "category": "SEO & 지식 인덱싱",
+      "title": "GraphRAG와 JSON-LD 스키마를 활용한 2026 AI 블로그 검색 노출 극대화 전략",
+      "target_keywords": [
+        "GraphRAG 블로그",
+        "JSON-LD 스키마",
+        "SEO 최적화",
+        "지식 그래프 RAG"
+      ],
+      "eeat_angle": "검색 로봇 친화적 메타 데이터 바인딩 및 내부 문서 상호 링크(Internal Link) 자동 생성 가이드",
+      "priority": "HIGH",
+      "created_at": "2026-08-12"
+    },
+    {
+      "id": "TOPIC-2026-007",
+      "category": "미국 빅테크 / 금융",
+      "title": "2026년 하반기 빅테크 M7 기업들의 AI CapEx 투자 규모와 주가 영향 정밀 분석",
+      "target_keywords": [
+        "빅테크 M7 실적",
+        "AI CapEx 투자",
+        "미국 주식 전망",
+        "테크주 포트폴리오"
+      ],
+      "eeat_angle": "주요 빅테크 기업들의 분기별 자본 지출(CapEx) 트렌드 분석 및 잉여현금흐름(FCF) 추이 비교",
+      "priority": "MEDIUM",
+      "created_at": "2026-08-12"
+    }
+  ]
+}

@@ -52,9 +52,18 @@ class OmnichannelMarketingTransformer:
             f"궁금한 점이 있다면 댓글로 남겨주세요! 💬"
         )
 
+        # 4. Naver/Tistory Blog Excerpt Summary
+        naver_excerpt = (
+            f"📝 [포스트 요약] {title}\n"
+            f"----------------------------------------\n"
+            f"• 메타 요약: {post_data.get('meta_description', '')}\n"
+            f"• 핵심 키워드: {', '.join(keywords)}\n"
+            f"• 원본 아티클 링크: https://blog.apollon-ai.lab/post/{post_data.get('slug', '')}\n"
+        )
+
         return {
             "title": title,
-            "slug": post_data.get("slug"),
+            "slug": post_data.get("slug", ""),
             "channels": {
                 "instagram": {
                     "slides": insta_slides,
@@ -66,9 +75,12 @@ class OmnichannelMarketingTransformer:
                 "threads": {
                     "post": threads_post
                 },
+                "naver_tistory": {
+                    "excerpt": naver_excerpt
+                },
                 "blog": {
-                    "filepath": post_data.get("filepath"),
-                    "json_ld": post_data.get("json_ld")
+                    "filepath": post_data.get("filepath", ""),
+                    "json_ld": post_data.get("json_ld", {})
                 }
             }
         }

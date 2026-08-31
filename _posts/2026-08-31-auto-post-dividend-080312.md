@@ -5,7 +5,7 @@ date: 2026-08-31 08:03:12 +0900
 description: "엔비디아(NVDA)의 높은 변동성을 활용해 초고배당을 창출하는 NVDY ETF의 옵션 타임디케이 구조, NAV 침식 리스크 및 배당 지속 가능성을 월가 퀀트 관점에서 정밀 분석합니다."
 categories: [Dividend, Finance]
 tags: [NVDY, 엔비디아, 일드맥스, 커버드콜, 미국주식]
-image: "https://picsum.photos/seed/Nvidia_Semiconductor_Finance/800/450"
+image: "https://image.pollinations.ai/prompt/Nvidia_Semiconductor_Finance?width=800&height=450&nologo=true"
 ---
 
 * TOC

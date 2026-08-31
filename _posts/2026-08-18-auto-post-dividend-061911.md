@@ -4,7 +4,7 @@ title: "[아메리칸 타워] 배당률 3.3%, 연 4회 지급! 2026년 AMT 배�
 date: 2026-08-18 06:19:11 +0900
 categories: [Dividend, Finance]
 tags: [아메리칸타워, AMT, 미국배당주, 리츠, 팩트시트]
-image: "https://picsum.photos/seed/Telecom_cell_tower_infrastructure/800/450"
+image: "https://image.pollinations.ai/prompt/Telecom_cell_tower_infrastructure?width=800&height=450&nologo=true"
 description: "아메리칸 타워는 통신 타워 임대에서 발생하는 예측 가능한 현금흐름(AFFO)을 바탕으로 주주 환원을 실시합니다. 글로벌 통신 인프라의 독점적 지위에도 불구하고, 자본 집중적(Cap..."
 ---
 * TOC

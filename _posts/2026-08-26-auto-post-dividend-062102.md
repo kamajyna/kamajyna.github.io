@@ -5,7 +5,7 @@ date: 2026-08-26 06:21:02 +0900
 description: "오메가 헬스케어(OHI)의 고배당 구조, AFFO 기준 배당성향, 임차인 리스크 및 밸류에이션에 대한 월가 퀀트 애널리스트의 심층 재무 팩트시트입니다."
 categories: [Dividend, Finance]
 tags: [오메가헬스케어, OHI, 배당주, 미국리츠, 재무분석]
-image: "https://picsum.photos/seed/healthcare_senior_living/800/450"
+image: "https://image.pollinations.ai/prompt/healthcare_senior_living?width=800&height=450&nologo=true"
 ---
 
 * TOC

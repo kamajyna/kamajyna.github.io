@@ -5,7 +5,7 @@ date: 2026-08-28 14:03:08 +0900
 description: "20년 이상 배당을 늘려온 텍사스 인스트루먼트(TXN)의 잉여현금흐름(FCF) 구조, 대규모 설비투자에 따른 하방 리스크, 재무 건전성 및 밸류에이션을 심층 분석합니다."
 categories: [Dividend, Finance]
 tags: [텍사스인스트루먼트, TXN, 미국배당주, 아날로그반도체, 재무분석]
-image: "https://picsum.photos/seed/Texas_Instruments_semiconductor/800/450"
+image: "https://image.pollinations.ai/prompt/Texas_Instruments_semiconductor?width=800&height=450&nologo=true"
 ---
 
 * TOC

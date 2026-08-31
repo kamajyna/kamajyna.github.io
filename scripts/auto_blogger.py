@@ -212,7 +212,7 @@ def generate_blog_post(category, topic):
    - `description`: 검색 결과 및 SNS 카드에 노출될 1~2문장의 핵심 요약문 (80~120자 내외)
    - `categories`: [Tech, Trend] 또는 관련 카테고리
    - `tags`: 핵심 키워드 4~5개
-   - `image`: "https://picsum.photos/seed/[주제_관련_구체적_영어키워드]/800/450" (예: cloud_computing_server, artificial_intelligence_code 등)
+    - `image`: "https://image.pollinations.ai/prompt/[주제_관련_구체적_영어키워드]?width=800&height=450&nologo=true" (예: cloud_computing_server, artificial_intelligence_code 등)
 5. **금지 사항**:
    - 상업적 제휴 링크(쿠팡 파트너스 등)나 어필리에이트 문구를 절대 삽입하지 말 것.
    - 본문 내에 불필요한 마크다운 이미지 태그를 중복 삽입하지 말 것.
@@ -226,7 +226,7 @@ date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 description: "포스트의 핵심 내용을 1~2문장으로 요약한 텍스트입니다."
 categories: [Tech, Trend]
 tags: [AI, 클라우드, 생산성, 테크트렌드]
-image: "https://picsum.photos/seed/artificial_intelligence_future/800/450"
+image: "https://image.pollinations.ai/prompt/artificial_intelligence_future?width=800&height=450&nologo=true"
 ---
 
 본문 내용...
@@ -256,7 +256,7 @@ image: "https://picsum.photos/seed/artificial_intelligence_future/800/450"
    - `description`: 해당 기업의 배당 매력도와 핵심 리스크 요약을 담은 1~2문장 (80~120자)
    - `categories`: [Dividend, Finance]
    - `tags`: 종목명, 티커, 배당주, 미국주식 등 4~5개
-   - `image`: "https://picsum.photos/seed/[해당기업_산업_관련_영어키워드]/800/450"
+   - `image`: "https://image.pollinations.ai/prompt/[해당기업_산업_관련_영어키워드]?width=800&height=450&nologo=true"
 5. **하단 투자 면책 조항**:
    - 최하단에 `<div class="disclaimer-box"><p><em>(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)</em></p></div>` 포함.
 6. **금지 사항**:
@@ -271,7 +271,7 @@ date: {datetime.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S')} +0900
 description: "기업명 배당 수익률과 재무 건전성, 잉여현금흐름 및 투자 리스크에 대한 종합 분석 팩트시트입니다."
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, 팩트시트, 재무분석]
-image: "https://picsum.photos/seed/Coca_Cola_beverage_corporate/800/450"
+image: "https://image.pollinations.ai/prompt/Coca_Cola_beverage_corporate?width=800&height=450&nologo=true"
 ---
 
 본문 내용...
@@ -348,7 +348,7 @@ def save_post(content, category):
         f.write(content.strip())
 
     # Pre-warm image cache
-    image_url_match = re.search(r'^image:\s*"(https?://picsum\.photos/seed/[^"]+)"', content, re.MULTILINE)
+    image_url_match = re.search(r'^image:\s*"(https?://[^"]+)"', content, re.MULTILINE)
     if image_url_match:
         img_url = image_url_match.group(1)
         print(f"Pre-warming image cache for: {img_url}")

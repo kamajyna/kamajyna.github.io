@@ -5,7 +5,7 @@ date: 2026-08-23 06:15:05 +0900
 description: "미국 최대 미드스트림 기업 EPD의 7%대 배당 안정성, 잉여현금흐름(FCF) 구조, 부채 만기 및 에너지 전환에 따른 리스크를 수석 퀀트 시각에서 종합 분석합니다."
 categories: [Dividend, Finance]
 tags: [엔터프라이즈프로덕츠, EPD, 배당주, 미국주식, 마스터유한파트너십]
-image: "https://picsum.photos/seed/Enterprise_Products_Energy_Pipeline/800/450"
+image: "https://image.pollinations.ai/prompt/Enterprise_Products_Energy_Pipeline?width=800&height=450&nologo=true"
 ---
 
 * TOC

@@ -4,7 +4,7 @@ title: "[펩시코/PEP] 배당수익률 3.2%·52년 연속 증배! 2026년 배�
 description: "펩시코(PEP)의 잉여현금흐름 구조, 배당 왕족주로서의 지속 가능성, 그리고 GLP-1 비만치료제 확산 및 부채 부담 등 객관적 리스크를 심층 분석합니다."
 categories: [Dividend, Finance]
 tags: [펩시코, PEP, 배당주, 미국주식, 배당왕족주]
-image: "https://picsum.photos/seed/PepsiCo_beverage_snack_finance/800/450"
+image: "https://image.pollinations.ai/prompt/PepsiCo_beverage_snack_finance?width=800&height=450&nologo=true"
 date: 2026-08-30 07:57:00 +0900
 ---
 

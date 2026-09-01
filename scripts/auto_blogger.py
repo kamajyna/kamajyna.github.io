@@ -352,24 +352,73 @@ def save_post(content, category):
     image_url_match = re.search(r'^image:\s*"(https?://[^"]+)"', fm_text, re.MULTILINE)
     external_img_url = image_url_match.group(1) if image_url_match else None
 
-    # 폴백 이미지 풀
-    fallback_urls = [
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop"
+    # 자연스러운 고화질 Unsplash 실사 스톡 사진 매핑 풀
+    SPECIFIC_PHOTOS = {
+        "pep": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=1000&q=80&auto=format&fit=crop",
+        "펩시": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=1000&q=80&auto=format&fit=crop",
+        "coca": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
+        "콜라": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
+        "ko": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
+        "nvdy": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
+        "nvda": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
+        "엔비디아": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
+        "semiconductor": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80&auto=format&fit=crop",
+        "반도체": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80&auto=format&fit=crop",
+        "apple": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=80&auto=format&fit=crop",
+        "애플": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=80&auto=format&fit=crop",
+        "aapl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=80&auto=format&fit=crop",
+        "microsoft": "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=1000&q=80&auto=format&fit=crop",
+        "msft": "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=1000&q=80&auto=format&fit=crop",
+        "마이크로소프트": "https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=1000&q=80&auto=format&fit=crop",
+        "starbucks": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1000&q=80&auto=format&fit=crop",
+        "스타벅스": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1000&q=80&auto=format&fit=crop",
+        "mcdonald": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=1000&q=80&auto=format&fit=crop",
+        "맥도날드": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=1000&q=80&auto=format&fit=crop",
+        "realty": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80&auto=format&fit=crop",
+        "리얼티": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80&auto=format&fit=crop",
+        "의료": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1000&q=80&auto=format&fit=crop",
+        "medical": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1000&q=80&auto=format&fit=crop",
+        "번역": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1000&q=80&auto=format&fit=crop",
+        "translation": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1000&q=80&auto=format&fit=crop",
+        "보안": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1000&q=80&auto=format&fit=crop",
+        "security": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1000&q=80&auto=format&fit=crop",
+    }
+
+    natural_finance_fallbacks = [
+        "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=1000&q=80&auto=format&fit=crop"
     ]
-    if category == "dividend":
-        target_url = external_img_url or "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format&fit=crop"
-    else:
-        target_url = external_img_url or "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop"
+    natural_tech_fallbacks = [
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1000&q=80&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&q=80&auto=format&fit=crop"
+    ]
+
+    # 키워드 매칭 실사 사진 탐색
+    content_search = (filename + " " + fm_text).lower()
+    selected_photo_url = None
+    for kw, p_url in SPECIFIC_PHOTOS.items():
+        if kw in content_search:
+            selected_photo_url = p_url
+            break
+
+    if not selected_photo_url:
+        pool = natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks
+        selected_photo_url = random.choice(pool)
 
     import urllib.request
     downloaded = False
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    for url_to_try in [target_url] + fallback_urls:
+    urls_to_try = [selected_photo_url] + (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks)
+    
+    for url_to_try in urls_to_try:
         try:
-            print(f"Downloading post image to local asset: {url_to_try[:60]}...")
+            print(f"Downloading natural stock photo: {url_to_try[:60]}...")
             req = urllib.request.Request(url_to_try, headers=headers)
             with urllib.request.urlopen(req, timeout=12) as resp:
                 img_bytes = resp.read()

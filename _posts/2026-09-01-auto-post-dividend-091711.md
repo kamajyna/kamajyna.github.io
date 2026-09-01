@@ -5,7 +5,7 @@ date: 2026-09-01 09:17:11 +0900
 description: "BTI의 9%대 초고배당 수익률의 지속 가능성과 잉여현금흐름(FCF), 부채 리스크, 신제품(NGP) 전환 성과를 월가 퀀트 시각에서 객관적으로 파헤칩니다."
 categories: [Dividend, Finance]
 tags: [BTI, 배당주, 브리티시아메리칸토바코, 미국주식, 고배당주]
-image: "https://image.pollinations.ai/prompt/British_American_Tobacco_corporate_finance_investment?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-09-01-auto-post-dividend-091711.jpg"
 ---
 
 * TOC

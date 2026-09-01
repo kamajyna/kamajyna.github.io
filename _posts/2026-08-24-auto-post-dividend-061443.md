@@ -5,7 +5,7 @@ date: 2026-08-24 06:14:43 +0900
 description: "연 13% 이상의 초고배당과 월배당 혜택을 제공하는 BDC 기업 프로스펙트 캐피탈(PSEC)의 잉여현금흐름, NAV 침식 리스크, 배당 지속 가능성을 월가 퀀트 관점에서 정밀 분석합니다."
 categories: [Dividend, Finance]
 tags: [프로스펙트캐피탈, PSEC, BDC, 미국배당주, 월배당]
-image: "https://image.pollinations.ai/prompt/WallStreet_Lending_Finance?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-24-auto-post-dividend-061443.jpg"
 ---
 
 * TOC

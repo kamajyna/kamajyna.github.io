@@ -342,24 +342,55 @@ def save_post(content, category):
     if n == 0:
         fm_text += f"\ndate: {current_time_str}"
         
+    # 이미지 로컬 정적 에셋 다운로드 및 영구 캐싱
+    img_dest_dir = os.path.join(base_dir, "assets", "images", "posts")
+    os.makedirs(img_dest_dir, exist_ok=True)
+    local_img_name = f"{filename[:-3]}.jpg"
+    local_img_path = os.path.join(img_dest_dir, local_img_name)
+    web_img_url = f"/assets/images/posts/{local_img_name}"
+
+    image_url_match = re.search(r'^image:\s*"(https?://[^"]+)"', fm_text, re.MULTILINE)
+    external_img_url = image_url_match.group(1) if image_url_match else None
+
+    # 폴백 이미지 풀
+    fallback_urls = [
+        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop"
+    ]
+    if category == "dividend":
+        target_url = external_img_url or "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format&fit=crop"
+    else:
+        target_url = external_img_url or "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop"
+
+    import urllib.request
+    downloaded = False
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+    for url_to_try in [target_url] + fallback_urls:
+        try:
+            print(f"Downloading post image to local asset: {url_to_try[:60]}...")
+            req = urllib.request.Request(url_to_try, headers=headers)
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                img_bytes = resp.read()
+                if len(img_bytes) > 5000:
+                    with open(local_img_path, "wb") as f_img:
+                        f_img.write(img_bytes)
+                    downloaded = True
+                    break
+        except Exception as e:
+            print(f"Image download attempt failed ({e}), trying fallback...")
+
+    # Frontmatter의 image 필드를 로컬 상대 경로로 보정
+    if "image:" in fm_text:
+        fm_text = re.sub(r'^[ \t]*image:[^\n]*$', f'image: "{web_img_url}"', fm_text, flags=re.MULTILINE)
+    else:
+        fm_text += f'\nimage: "{web_img_url}"'
+
     content = f"---\n{fm_text.strip()}\n---\n\n{body_text.strip()}"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content.strip())
-
-    # Pre-warm image cache
-    image_url_match = re.search(r'^image:\s*"(https?://[^"]+)"', content, re.MULTILINE)
-    if image_url_match:
-        img_url = image_url_match.group(1)
-        print(f"Pre-warming image cache for: {img_url}")
-        import threading
-        import urllib.request
-        def prewarm():
-            try:
-                urllib.request.urlopen(img_url, timeout=15)
-            except Exception as e:
-                print(f"Image pre-warm failed: {e}")
-        threading.Thread(target=prewarm, daemon=True).start()
 
     print(f"새 포스트가 생성되었습니다 [{category.upper()}]: {filepath}")
     return filepath

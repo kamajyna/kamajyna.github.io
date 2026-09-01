@@ -4,7 +4,7 @@ title: "[시스코 CSCO] 배당수익률 3.2%, 14년 연속 배당인상! 2026�
 date: 2026-08-11 06:34:44 +0900
 categories: [Dividend, Finance]
 tags: [시스코, CSCO, 미국배당주, 테크배당주, 재무분석, 월가분석]
-image: "https://image.pollinations.ai/prompt/Cisco_network_server_datacenter?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-11-auto-post-dividend-063444.jpg"
 description: "🏢 **기업 개요 및 비즈니스 모델** 시스코 시스템즈(Cisco Systems, Ticker: **CSCO**)는 전 세계 기업용 네트워크 장비(스위치, 라우터) 및 네트워크 보..."
 ---
 * TOC

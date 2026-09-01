@@ -4,7 +4,7 @@ title: "[퇴근길머니] 또다시 찾아온 '검은 금요일'과 레버리지
 date: 2026-07-23 18:00:00 +0900
 categories: [Finance, ETF]
 tags: [레버리지ETF, 검은금요일, 월배당ETF, 현금흐름, 절세재테크, ISA, 연금저축]
-image: "https://image.pollinations.ai/prompt/rollercoaster_market_bear?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-07-23-auto-post-dividend-014433.jpg"
 description: "최근 금융시장이 다시 한번 거센 흔들림을 겪었습니다. 연합뉴스 보도(`[퇴근길머니] 또다시 '검은 금요일'…수술대 오른 레버리지 ETF`)에 따르면, 글로벌 증시의 변동성 확대와..."
 ---
 최근 금융시장이 다시 한번 거센 흔들림을 겪었습니다. 연합뉴스 보도(`[퇴근길머니] 또다시 '검은 금요일'…수술대 오른 레버리지 ETF`)에 따르면, 글로벌 증시의 변동성 확대와 함께 고위험 레버리지 ETF에 집중 투자했던 개인 투자자들의 손실이 커지면서 금융당국의 제도 개선 및 규제 논의가 본격화되고 있습니다.

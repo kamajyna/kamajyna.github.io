@@ -4,7 +4,7 @@ title: "[AGNC] 연 14%대 월배당의 실체! 순자산(NAV) 침식과 배당 �
 date: 2026-08-05 15:15:20 +0900
 categories: [Dividend, Finance]
 tags: [AGNC, 리츠, 월배당, 미국주식, 배당주분석, 모기지리츠]
-image: "https://image.pollinations.ai/prompt/AGNC_mortgage_finance?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-05-auto-post-dividend-151520.jpg"
 description: "* 2012년: 주당 $1.25 (분기배당 시절)   * 2014년: 주당 $0.22 (월배당 전환)   * 2019년: 주당 $0.18로 삭감   * 2020년 4월: 주당 **..."
 ---
 * TOC

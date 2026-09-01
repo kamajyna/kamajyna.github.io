@@ -4,7 +4,7 @@ title: "[MAIN] 월배당 7.8%+13년 연속 성장! 메인 스트리트 캐피탈
 date: 2026-07-30 09:16:20 +0900
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, 팩트시트, BDC, 월배당, 메인스트리트캐피탈, MAIN]
-image: "https://image.pollinations.ai/prompt/Main_Street_Capital_financial_district_growth?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-07-30-auto-post-dividend-091620.jpg"
 description: "🏢 **기업 개요 및 비즈니스 모델** 메인 스트리트 캐피탈의 핵심 비즈니스 모델 및 차별화 포인트는 다음과 같습니다: 1. **하이브리드 투자 구조**: 단순 대출 이자수익(De..."
 ---
 * TOC

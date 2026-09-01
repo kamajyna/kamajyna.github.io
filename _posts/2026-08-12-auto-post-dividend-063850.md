@@ -4,7 +4,7 @@ title: "[SBUX] 배당수익률 2.6%, 14년 연속 배당성장! 스타벅스 배
 date: 2026-08-12 06:38:50 +0900
 categories: [Dividend, Finance]
 tags: [스타벅스, SBUX, 배당주, 미국주식, 배당성장주, 팩트시트]
-image: "https://image.pollinations.ai/prompt/Starbucks_coffee_cup?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-12-auto-post-dividend-063850.jpg"
 description: "스타벅스의 주 현금 창출 원천은 크게 세 가지 사업 부문에서 발생합니다: 1. **직영 매장 매출(Company-Operated Stores)**: 전체 매출의 **약 80% 이상..."
 ---
 * TOC

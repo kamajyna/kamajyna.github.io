@@ -4,7 +4,7 @@ title: "토스증권, 첫 절세상품 ’연금저축계좌’ 출시! 월배�
 date: 2026-07-22 09:00:00 +0900
 categories: [Finance, Tax-Saving]
 tags: [토스증권, 연금저축펀드, 절세, 월배당ETF, 재테크, 미국배당]
-image: "https://image.pollinations.ai/prompt/piggy_bank_coins_savings?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-07-22-auto-post-dividend-004333.jpg"
 description: "안녕하세요, **현금흐름 기반 금융/주식/월배당 ETF 및 절세 재테크**를 전문으로 다루는 수석 수량분석가(Quant Analyst)이자 파워 블로거입니다. 최근 금융시장에서 가..."
 ---
 안녕하세요, **현금흐름 기반 금융/주식/월배당 ETF 및 절세 재테크**를 전문으로 다루는 수석 수량분석가(Quant Analyst)이자 파워 블로거입니다.

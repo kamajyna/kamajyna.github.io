@@ -4,7 +4,7 @@ title: "[JNJ] 시가배당률 3.2%, 62년 연속 배당인상! 존슨앤존슨 �
 date: 2026-08-06 09:13:11 +0900
 categories: [Dividend, Finance]
 tags: [존슨앤존슨, JNJ, 미국배당주, 배당킹, 팩트시트, 재테크]
-image: "https://image.pollinations.ai/prompt/Johnson_Johnson_healthcare_pharma?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-06-auto-post-dividend-091311.jpg"
 description: "존슨앤존슨(Johnson & Johnson, Ticker: **JNJ**)은 1886년에 설립되어 135년 이상의 역사를 자랑하는 글로벌 종합 헬스케어 기업입니다. 2023년 소비..."
 ---
 * TOC

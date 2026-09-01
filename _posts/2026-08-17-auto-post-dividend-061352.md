@@ -4,7 +4,7 @@ title: "[SDIV] 시가배당률 12%대 초고배당 월배당 ETF! Global X Super
 date: 2026-08-17 06:13:52 +0900
 categories: [Dividend, ETF]
 tags: [SDIV, 월배당ETF, 고배당주, 글로벌배당, 미국주식, 재테크]
-image: "https://image.pollinations.ai/prompt/Global_Dividend_Yield_Finance?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-17-auto-post-dividend-061352.jpg"
 description: "🏢 **기업 개요 및 비즈니스 모델** ====================================== SDIV의 비즈니스 모델은 고유의 사업 운영을 통해 직접 현금흐름을 창..."
 ---
 * TOC

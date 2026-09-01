@@ -4,7 +4,7 @@ title: "맥도날드(MCD) 배당률 2.3%, 48년 연속 배당성장! 2026년 배
 date: 2026-08-22 06:18:10 +0900
 categories: [Dividend, Finance]
 tags: [맥도날드, MCD, 배당주, 미국주식, 배당귀족주, 재무분석]
-image: "https://image.pollinations.ai/prompt/McDonalds_fast_food_burger?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-22-auto-post-dividend-061810.jpg"
 description: "전 세계 40,000개 이상의 매장 중 **약 95%가 가맹점(Franchised)** 형태로 운영됩니다. 맥도날드의 핵심 비즈니스 수익 구조는 다음과 같습니다. 이와 같은 비즈니..."
 ---
 * TOC

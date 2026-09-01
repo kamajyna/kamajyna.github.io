@@ -5,7 +5,7 @@ date: 2026-08-25 06:22:00 +0900
 description: "화이자(PFE)의 6%대 고배당 매력 뒤에 숨겨진 특허 만료 리스크, 씨젠 인수 후 부채 구조, 잉여현금흐름(FCF) 기반 배당 지속 가능성을 심층 분석합니다."
 categories: [Dividend, Finance]
 tags: [화이자, PFE, 미국배당주, 고배당주, 제약주, 재무분석]
-image: "https://image.pollinations.ai/prompt/pfizer_pharma_medicine?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-25-auto-post-dividend-062200.jpg"
 ---
 
 * TOC

@@ -5,7 +5,7 @@ date: 2026-08-29 11:59:33 +0900
 description: "버라이즌(VZ)의 6%대 고배당 매력과 잉여현금흐름(FCF) 구조, 막대한 순부채 상환 압박 및 금리 민감도 등 핵심 리스크를 정밀하게 파헤친 전문 분석 팩트시트입니다."
 categories: [Dividend, Finance]
 tags: [버라이즌, VZ, 미국배당주, 고배당주, 재무분석]
-image: "https://image.pollinations.ai/prompt/Verizon_telecom_network?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-29-auto-post-dividend-115933.jpg"
 ---
 
 * TOC

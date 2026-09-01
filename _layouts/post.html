@@ -28,7 +28,7 @@ layout: default
 
     {%- if page.image -%}
       <div class="post-hero-image">
-        <img src="{{ page.image }}" alt="{{ page.title | escape }}" onerror="this.style.display='none';" />
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" onerror="this.style.display='none';" />
       </div>
     {%- endif -%}
   </header>

@@ -4,7 +4,7 @@ title: "[에퀴닉스/EQIX] 배당률 2.0%, 연 4회 지급! 2026년 글로벌 A
 date: 2026-08-14 06:37:36 +0900
 categories: [Dividend, Finance]
 tags: [에퀴닉스, EQIX, 미국배당주, 데이터센터리츠, 배당성장주, 팩트시트]
-image: "https://image.pollinations.ai/prompt/Data_center_server_cloud?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-14-auto-post-dividend-063736.jpg"
 description: "에퀴닉스의 핵심 비즈니스 모델은 단순한 부동산 임대업을 넘어섭니다. 주요 현금 흐름 창출원은 다음과 같이 구분됩니다. 1. **상호연결(Interconnection) 서비스**:..."
 ---
 * TOC

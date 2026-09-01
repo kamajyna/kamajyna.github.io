@@ -36,7 +36,7 @@ layout: default
                 <a class="post-link" href="{{ post.url | relative_url }}">
                   <div class="post-card-thumb">
                     {%- if post_thumb and post_thumb != "" -%}
-                      <img src="{{ post_thumb }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                      <img src="{{ post_thumb | relative_url }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                       <div class="post-thumb-placeholder category-dividend" style="display: none;">
                         <span class="placeholder-icon">📈</span>
                         <span class="placeholder-tag">FINANCE</span>
@@ -102,7 +102,7 @@ layout: default
                 <a class="post-link" href="{{ post.url | relative_url }}">
                   <div class="post-card-thumb">
                     {%- if post_thumb and post_thumb != "" -%}
-                      <img src="{{ post_thumb }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                      <img src="{{ post_thumb | relative_url }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                       <div class="post-thumb-placeholder category-tech" style="display: none;">
                         <span class="placeholder-icon">💻</span>
                         <span class="placeholder-tag">TECH</span>

@@ -4,7 +4,7 @@ title: "[MAIN] 배당률 8%대 월배당의 정석! 메인 스트리트 캐피�
 date: 2026-08-09 07:00:43 +0900
 categories: [Dividend, Finance]
 tags: [MAIN, 메인스트리트캐피탈, BDC, 월배당주, 미국배당주, 팩트시트]
-image: "https://image.pollinations.ai/prompt/Main_Street_Capital_BDC_loan?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-09-auto-post-dividend-070043.jpg"
 description: "MAIN은 미국 증시에서 손꼽히는 **고품질 월배당(Monthly Dividend)** 종목으로, 정기 배당 외에 실적에 연동된 보충 배당(Supplemental Dividend)..."
 ---
 * TOC

@@ -4,7 +4,7 @@ title: "[STWD] 배당률 9.8%, 연 4회 지급! 스타우드 프로퍼티 배당
 date: 2026-07-28 16:48:41 +0900
 categories: [Dividend, Finance]
 tags: [배당주, 미국주식, STWD, 모기지리츠, 배당팩트시트]
-image: "https://image.pollinations.ai/prompt/Commercial_Real_Estate_Architecture_Sunny?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-07-28-auto-post-dividend-164841.jpg"
 description: "🏢 기업 개요 및 비즈니스 모델 1. **상업용 모기지 대출 (Commercial & Residential Lending)**: 포트폴리오의 가장 큰 비중을 차지하며, 주로 1순위..."
 ---
 * TOC

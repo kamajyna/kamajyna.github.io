@@ -4,7 +4,7 @@ title: "[DVY] 배당률 3.7%, 연 4회 분기배당! 2026년 iShares Select Divi
 date: 2026-08-16 06:14:09 +0900
 categories: [Dividend, Finance]
 tags: [DVY, 배당주, 미국주식, 배당ETF, 팩트시트, 재테크]
-image: "https://image.pollinations.ai/prompt/us_dollar_dividend_wallstreet?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-16-auto-post-dividend-061409.jpg"
 description: "DVY의 종목 선별은 단순 배당수익률 정렬이 아닌 엄격한 수량적(Quant) 필터링 기법을 적용합니다. 주요 편입 조건은 다음과 같습니다: 편입 가중치는 시가총액 방식이 아닌 **..."
 ---
 * TOC

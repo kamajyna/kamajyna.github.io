@@ -5,7 +5,7 @@ date: 2026-08-27 09:22:45 +0900
 description: "세계적인 글로벌 제약사 애비브(ABBV)의 배당 지속 가능성, 휴미라 특허 만료 이후의 차세대 파이프라인 성과 및 핵심 재무 리스크를 월가 퀀트 시각에서 심층 분석합니다."
 categories: [Dividend, Finance]
 tags: [애비브, ABBV, 배당주, 미국주식, 팩트시트]
-image: "https://image.pollinations.ai/prompt/AbbVie_biotech_medicine?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-27-auto-post-dividend-092245.jpg"
 ---
 
 * TOC

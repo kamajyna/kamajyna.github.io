@@ -4,7 +4,7 @@ title: "[W.P. 캐리] 시가배당률 6.1%, 오피스 털어낸 리츠의 반격
 date: 2026-08-07 08:42:55 +0900
 categories: [Dividend, RealEstate]
 tags: [WPC, WP캐리, 배당주, 리츠, 미국주식, 팩트시트]
-image: "https://image.pollinations.ai/prompt/Warehouse_logistics_realestate?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-07-auto-post-dividend-084255.jpg"
 description: "W.P. 캐리는 오피스 철수 과정에서 배당금을 한 차례 리셋(Reset)한 후, 낮아진 배당 기준선 위에서 다시 지속적인 분기별 인상을 재개하고 있습니다. 수량분석가(Quant)의..."
 ---
 * TOC

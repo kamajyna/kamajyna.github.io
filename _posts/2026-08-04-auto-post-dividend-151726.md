@@ -4,7 +4,7 @@ title: "[TSLY] 연 60%대 초고배당 월배당 ETF! NAV 침식과 리스크 �
 date: 2026-08-04 15:17:26 +0900
 categories: [Dividend, Finance]
 tags: [TSLY, 일드맥스, 테슬라, 미국배당주, 월배당, 커버드콜, 팩트시트]
-image: "https://image.pollinations.ai/prompt/Tesla_electric_car_options_trading?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-04-auto-post-dividend-151726.jpg"
 description: "1. **합성 매수 포지션(Synthetic Long)**: 미국 단기 국채(T-Bills)를 담보로 보유하면서, 테슬라 콜옵션을 매수하고 푸트옵션을 매도하여 테슬라 주가지수 추종..."
 ---
 * TOC

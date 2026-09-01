@@ -4,7 +4,7 @@ title: "[MPW] 배당률 9.8%, 분기 배당! 메디컬 프로퍼티즈 트러스
 date: 2026-08-07 13:37:49 +0900
 categories: [Dividend, Finance]
 tags: [MPW, 메디컬프로퍼티즈트러스트, 미국주식, 배당주, 리츠, 고배당주]
-image: "https://image.pollinations.ai/prompt/Medical_hospital_building?width=800&height=450&nologo=true"
+image: "/assets/images/posts/2026-08-07-auto-post-dividend-133749.jpg"
 description: "🏢 기업 개요 및 비즈니스 모델 💰 핵심 배당 팩트 MPW의 현재 주요 배당 지표는 다음과 같습니다. (최근 시장 주가 및 조정 공시 기준) 📊 재무 건전성 및 리스크(Risk)..."
 ---
 * TOC

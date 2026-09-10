@@ -38,13 +38,17 @@ layout: default
                     {%- if post_thumb and post_thumb != "" -%}
                       <img src="{{ post_thumb | relative_url }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                       <div class="post-thumb-placeholder category-dividend" style="display: none;">
-                        <span class="placeholder-icon">📈</span>
-                        <span class="placeholder-tag">FINANCE</span>
+                        <div class="placeholder-badge">
+                          <span class="placeholder-icon">📈</span>
+                          <span class="placeholder-tag">FINANCE</span>
+                        </div>
                       </div>
                     {%- else -%}
                       <div class="post-thumb-placeholder category-dividend">
-                        <span class="placeholder-icon">📈</span>
-                        <span class="placeholder-tag">FINANCE</span>
+                        <div class="placeholder-badge">
+                          <span class="placeholder-icon">📈</span>
+                          <span class="placeholder-tag">FINANCE</span>
+                        </div>
                       </div>
                     {%- endif -%}
                   </div>
@@ -104,13 +108,17 @@ layout: default
                     {%- if post_thumb and post_thumb != "" -%}
                       <img src="{{ post_thumb | relative_url }}" alt="{{ post.title | escape }}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                       <div class="post-thumb-placeholder category-tech" style="display: none;">
-                        <span class="placeholder-icon">💻</span>
-                        <span class="placeholder-tag">TECH</span>
+                        <div class="placeholder-badge">
+                          <span class="placeholder-icon">💻</span>
+                          <span class="placeholder-tag">TECH</span>
+                        </div>
                       </div>
                     {%- else -%}
                       <div class="post-thumb-placeholder category-tech">
-                        <span class="placeholder-icon">💻</span>
-                        <span class="placeholder-tag">TECH</span>
+                        <div class="placeholder-badge">
+                          <span class="placeholder-icon">💻</span>
+                          <span class="placeholder-tag">TECH</span>
+                        </div>
                       </div>
                     {%- endif -%}
                   </div>

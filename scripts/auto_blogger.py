@@ -16,6 +16,7 @@ except ImportError:
     pass
 
 import feedparser
+import time
 
 def get_topic_by_category(category):
     if category == "auto":
@@ -277,26 +278,36 @@ image: "https://image.pollinations.ai/prompt/Coca_Cola_beverage_corporate?width=
 본문 내용...
 """
 
-    models_to_try = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.0-flash']
+    # 최신 활성 모델 라인업 (gemini-2.0-flash EOL 반영 및 3.8, 3.7 추가)
+    models_to_try = ['gemini-3.8-flash', 'gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash']
     last_err = None
     for model_name in models_to_try:
-        try:
-            print(f"Generating content with model: {model_name}...")
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0.7,
+        for attempt in range(1, 4):
+            try:
+                print(f"Generating content with model: {model_name} (attempt {attempt}/3)...")
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.7,
+                    )
                 )
-            )
-            text = (getattr(response, "text", None) or "").strip()
-            if len(text) < 300:
-                print(f"Model {model_name} output too short ({len(text)} chars), trying fallback...")
-                continue
-            return text
-        except Exception as e:
-            print(f"Model {model_name} failed ({e}), trying fallback...")
-            last_err = e
+                text = (getattr(response, "text", None) or "").strip()
+                if len(text) < 300:
+                    print(f"Model {model_name} output too short ({len(text)} chars), trying fallback...")
+                    break
+                return text
+            except Exception as e:
+                err_str = str(e)
+                print(f"Model {model_name} attempt {attempt} failed ({err_str})...")
+                last_err = e
+                # 일시적 부하(503) 또는 속도 제한(429) 시 지수 백오프 대기 후 재시도
+                if any(code in err_str for code in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED"]) and attempt < 3:
+                    wait_sec = attempt * 3
+                    print(f"Temporary API spike detected. Waiting {wait_sec}s before retry...")
+                    time.sleep(wait_sec)
+                else:
+                    break
     raise last_err or RuntimeError("All models failed to generate content")
 
 def save_post(content, category):

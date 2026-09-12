@@ -18,6 +18,12 @@ except ImportError:
 import feedparser
 import time
 
+try:
+    from scripts.dividend_opportunity_scanner import DividendOpportunityScanner, DEFAULT_DIVIDEND_STOCKS
+except ImportError:
+    from dividend_opportunity_scanner import DividendOpportunityScanner, DEFAULT_DIVIDEND_STOCKS
+
+
 def get_topic_by_category(category):
     if category == "auto":
         # 현재 시각(시 단위) 또는 확률에 따라 자동 선택
@@ -68,77 +74,55 @@ def get_topic_by_category(category):
         if articles:
             topic = random.choice(articles)
             print(f"RSS에서 추출한 주제 [{category.upper()}]: {topic}")
-            return category, topic
+            return category, topic, None
         else:
             topic = random.choice(fallback_topics)
             print(f"백업 목록에서 선택한 주제 [{category.upper()}]: {topic}")
-            return category, topic
+            return category, topic, None
 
     else:  # dividend / finance
-        dividend_stocks_data = [
-            # 초우량 / 배당성장
-            {"ticker": "KO", "name": "코카콜라 (KO)", "keywords": ["KO", "코카콜라"]},
-            {"ticker": "O", "name": "리얼티 인컴 (O)", "keywords": ["리얼티 인컴", "리얼티인컴", "Realty Income"]},
-            {"ticker": "JNJ", "name": "존슨앤존슨 (JNJ)", "keywords": ["JNJ", "존슨앤존슨", "존슨앤드존슨"]},
-            {"ticker": "AAPL", "name": "애플 (AAPL)", "keywords": ["AAPL", "애플"]},
-            {"ticker": "MSFT", "name": "마이크로소프트 (MSFT)", "keywords": ["MSFT", "마이크로소프트"]},
-            {"ticker": "SBUX", "name": "스타벅스 (SBUX)", "keywords": ["SBUX", "스타벅스"]},
-            {"ticker": "MCD", "name": "맥도날드 (MCD)", "keywords": ["MCD", "맥도날드"]},
-            {"ticker": "PG", "name": "프록터앤갬블 (PG)", "keywords": ["PG", "프록터앤갬블", "프록터 & 갬블"]},
-            {"ticker": "XOM", "name": "엑슨모빌 (XOM)", "keywords": ["XOM", "엑슨모빌"]},
-            {"ticker": "CVX", "name": "셰브론 (CVX)", "keywords": ["CVX", "셰브론"]},
-            {"ticker": "ABBV", "name": "애비브 (ABBV)", "keywords": ["ABBV", "애비브"]},
-            {"ticker": "PFE", "name": "화이자 (PFE)", "keywords": ["PFE", "화이자"]},
-            {"ticker": "HD", "name": "홈디포 (HD)", "keywords": ["HD", "홈디포"]},
-            {"ticker": "LMT", "name": "록히드마틴 (LMT)", "keywords": ["LMT", "록히드마틴"]},
-            {"ticker": "TXN", "name": "텍사스 인스트루먼트 (TXN)", "keywords": ["TXN", "텍사스 인스트루먼트", "텍사스인스트루먼트"]},
-            {"ticker": "COST", "name": "코스트코 (COST)", "keywords": ["COST", "코스트코"]},
-            {"ticker": "JPM", "name": "제이피모건체이스 (JPM)", "keywords": ["JPM", "제이피모건", "JP모건"]},
-            {"ticker": "BAC", "name": "뱅크오브아메리카 (BAC)", "keywords": ["BAC", "뱅크오브아메리카"]},
-            {"ticker": "PEP", "name": "펩시코 (PEP)", "keywords": ["PEP", "펩시코"]},
-            {"ticker": "CSCO", "name": "시스코 시스템즈 (CSCO)", "keywords": ["CSCO", "시스코"]},
-            {"ticker": "AVGO", "name": "브로드컴 (AVGO)", "keywords": ["AVGO", "브로드컴"]},
-            {"ticker": "QCOM", "name": "퀄컴 (QCOM)", "keywords": ["QCOM", "퀄컴"]},
-            
-            # 고배당 / 리츠 / BDC / 통신 / 에너지 / 모기지
-            {"ticker": "T", "name": "AT&T (T)", "keywords": ["AT&T", "AT and T"]},
-            {"ticker": "VZ", "name": "버라이즌 (VZ)", "keywords": ["VZ", "버라이즌"]},
-            {"ticker": "MO", "name": "알트리아 (MO)", "keywords": ["MO", "알트리아"]},
-            {"ticker": "BTI", "name": "브리티시 아메리칸 토바코 (BTI)", "keywords": ["BTI", "브리티시 아메리칸 토바코", "브리티시아메리칸"]},
-            {"ticker": "ARCC", "name": "아레스 캐피탈 (ARCC)", "keywords": ["ARCC", "아레스 캐피탈", "아레스캐피탈"]},
-            {"ticker": "MAIN", "name": "메인 스트리트 캐피탈 (MAIN)", "keywords": ["MAIN", "메인 스트리트", "메인스트리트"]},
-            {"ticker": "PSEC", "name": "프로스펙트 캐피탈 (PSEC)", "keywords": ["PSEC", "프로스펙트 캐피탈", "프로스펙트캐피탈"]},
-            {"ticker": "AGNC", "name": "에이전시 인베스트먼트 (AGNC)", "keywords": ["AGNC", "에이전시 인베스트먼트", "에이전시인베스트먼트"]},
-            {"ticker": "ARR", "name": "아머 레지덴셜 리츠 (ARR)", "keywords": ["ARR", "아머 레지덴셜", "아머레지덴셜"]},
-            {"ticker": "STWD", "name": "스타우드 프로퍼티 (STWD)", "keywords": ["STWD", "스타우드 프로퍼티", "스타우드프로퍼티"]},
-            {"ticker": "OHI", "name": "오메가 헬스케어 (OHI)", "keywords": ["OHI", "오메가 헬스케어", "오메가헬스케어"]},
-            {"ticker": "MPW", "name": "메디컬 프로퍼티즈 트러스트 (MPW)", "keywords": ["MPW", "메디컬 프로퍼티즈", "메디컬프로퍼티즈"]},
-            {"ticker": "WPC", "name": "W.P. 캐리 (WPC)", "keywords": ["WPC", "W.P. 캐리", "W.P.캐리", "WP 캐리"]},
-            {"ticker": "EPD", "name": "엔터프라이즈 프로덕츠 파트너스 (EPD)", "keywords": ["EPD", "엔터프라이즈 프로덕츠"]},
-            {"ticker": "EQIX", "name": "에퀴닉스 (EQIX)", "keywords": ["EQIX", "에퀴닉스"]},
-            {"ticker": "AMT", "name": "아메리칸 타워 (AMT)", "keywords": ["AMT", "아메리칸 타워"]},
-            {"ticker": "VICI", "name": "비시 프로퍼티스 (VICI)", "keywords": ["VICI", "비시 프로퍼티스", "VICI Properties"]},
-            
-            # 고배당 / 커버드콜 / 배당 ETF
-            {"ticker": "SCHD", "name": "슈와브 US 디비던드 에퀴티 (SCHD)", "keywords": ["SCHD", "슈와브 US", "Schwab U.S. Dividend"]},
-            {"ticker": "JEPI", "name": "JP모건 에퀴티 프리미엄 인컴 (JEPI)", "keywords": ["JEPI", "JP모건 에퀴티 프리미엄"]},
-            {"ticker": "JEPQ", "name": "JP모건 나스닥 에퀴티 프리미엄 (JEPQ)", "keywords": ["JEPQ", "JP모건 나스닥 에퀴티"]},
-            {"ticker": "QYLD", "name": "Global X 나스닥 100 커버드콜 (QYLD)", "keywords": ["QYLD", "Global X 나스닥"]},
-            {"ticker": "SDIV", "name": "Global X 슈퍼디비던드 (SDIV)", "keywords": ["SDIV", "슈퍼디비던드"]},
-            {"ticker": "TSLY", "name": "일드맥스 TSLA 옵션 인컴 (TSLY)", "keywords": ["TSLY", "일드맥스 TSLA", "YieldMax TSLA"]},
-            {"ticker": "NVDY", "name": "일드맥스 NVDA 옵션 인컴 (NVDY)", "keywords": ["NVDY", "일드맥스 NVDA", "YieldMax NVDA"]},
-            {"ticker": "VYM", "name": "뱅가드 하이 디비던드 (VYM)", "keywords": ["VYM", "뱅가드 하이 디비던드"]},
-            {"ticker": "DVY", "name": "iShares Select Dividend (DVY)", "keywords": ["DVY", "iShares Select Dividend"]}
-        ]
-
         # _posts 디렉토리 경로
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         posts_dir = os.path.join(base_dir, "_posts")
 
-        # 최근 포스팅 기록 파싱
-        import glob
-        import re
+        # 1. EDITH Multi-Factor Dividend Opportunity Scanner 가동
+        try:
+            print("[EDITH Engine] 실시간 금융 데이터 및 6대 기회 스캐너 가동 중...")
+            scanner = DividendOpportunityScanner(posts_dir=posts_dir)
+            all_opps = scanner.scan_all_stocks()
 
+            # 쿨다운(-50점)을 감안하여 점수 35점 이상인 최상위 기회 종목 탐색
+            valid_opps = [o for o in all_opps if o["score"] >= 35]
+            if valid_opps:
+                top_opp = valid_opps[0]
+                stock_name = top_opp["name"]
+                trigger = top_opp["primary_trigger"]
+
+                # 트리거별 최적화된 블로그 주제 생성
+                if trigger == "dividend_hike":
+                    topic = f"{stock_name} 배당금 깜짝 인상 발표 및 2026 현금흐름 팩트시트"
+                elif trigger == "valuation_dip":
+                    topic = f"{stock_name} 52주 고점 대비 저평가 조정 및 배당 매수 기회 분석"
+                elif trigger == "ex_dividend_countdown":
+                    topic = f"{stock_name} 배당락일 D-day 임박 및 배당금 수령 투자 전략"
+                elif trigger == "risk_audit":
+                    topic = f"{stock_name} 배당 삭감 리스크 및 배당 안전성 긴급 진단"
+                elif trigger == "etf_rebalance":
+                    topic = f"{stock_name} ETF 최신 분배금 발표 및 포트폴리오 리밸런싱 분석"
+                elif trigger == "oversold_bounce":
+                    topic = f"{stock_name} 바닥권 기술적 과매도 탈출 및 배당+시세차익 분석"
+                else:
+                    topic = f"{stock_name} 배당 및 재무 분석 팩트시트"
+
+                print(f"🔥 [EDITH 기회 포착 선정] {stock_name} (Score: {top_opp['score']}점, Trigger: {trigger})")
+                for r in top_opp["reasons"]:
+                    print(f"   -> {r}")
+                return category, topic, top_opp
+        except Exception as e:
+            print(f"[EDITH Scanner Warning] 스캐너 실행 중 예외 발생, Fallback 가동: {e}")
+
+        # 2. Fallback: 기존 LRU 및 미발행 종목 순환 알고리즘
+        dividend_stocks_data = DEFAULT_DIVIDEND_STOCKS
         stock_last_dates = {item["ticker"]: None for item in dividend_stocks_data}
         if os.path.exists(posts_dir):
             post_files = glob.glob(os.path.join(posts_dir, "*.md"))
@@ -151,28 +135,23 @@ def get_topic_by_category(category):
                     post_date_str = date_match.group(1)
 
                     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-                        content = f.read()
+                        content = f.read().lower()
 
                     for item in dividend_stocks_data:
                         ticker = item["ticker"]
-                        keywords = item["keywords"]
-                        for kw in keywords:
-                            if kw.lower() in content.lower():
+                        for kw in item["keywords"]:
+                            if kw.lower() in content:
                                 if stock_last_dates[ticker] is None or post_date_str > stock_last_dates[ticker]:
                                     stock_last_dates[ticker] = post_date_str
                                 break
-                except Exception as e:
+                except Exception:
                     pass
 
-        # Round-Robin / LRU (Least Recently Used) 선택 알고리즘
-        # 1. 포스팅 이력이 없는(None) 종목 후보군
         never_posted = [item for item in dividend_stocks_data if stock_last_dates[item["ticker"]] is None]
-
         if never_posted:
             selected_item = random.choice(never_posted)
             print(f"신규 종목 선택 (포스팅 이력 없음) [{category.upper()}]: {selected_item['name']}")
         else:
-            # 2. 모든 종목이 1회 이상 작성된 경우, 가장 오래전에 작성된 일자 탐색
             min_date = min(stock_last_dates[item["ticker"]] for item in dividend_stocks_data)
             oldest_candidates = [
                 item for item in dividend_stocks_data 
@@ -184,9 +163,9 @@ def get_topic_by_category(category):
         stock = selected_item["name"]
         topic = f"{stock} 배당 및 재무 분석 팩트시트"
         print(f"최종 결정된 배당주 주제: {topic}")
-        return category, topic
+        return category, topic, None
 
-def generate_blog_post(category, topic):
+def generate_blog_post(category, topic, opp_info=None):
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY 환경변수가 설정되지 않았습니다.")
@@ -233,34 +212,64 @@ image: "https://image.pollinations.ai/prompt/artificial_intelligence_future?widt
 본문 내용...
 """
     else:  # dividend / finance
+        opp_context = ""
+        if opp_info:
+            trigger_labels = {
+                "dividend_hike": "🔥 배당금 깜짝 인상 발표 및 배당 성장성 모멘텀",
+                "valuation_dip": "💎 52주 고점 대비 큰 폭 조정에 따른 저평가 배당 매수 기회",
+                "ex_dividend_countdown": "⏰ 배당락일 D-day 임박 (단기 배당금 수령 매수 적기)",
+                "risk_audit": "⚠️ 배당 삭감 리스크 및 배당 안전성 긴급 진단",
+                "etf_rebalance": "🔄 ETF 정기 리밸런싱 및 분배금 현금흐름 심층 해부",
+                "oversold_bounce": "📈 바닥권 기술적 과매도 탈출 및 배당+시세차익 공략",
+                "general": "📊 2026 최신 펀더멘털 및 배당 현금흐름 분석"
+            }
+            trigger_name = trigger_labels.get(opp_info.get("primary_trigger"), "최신 배당 기회 분석")
+            reasons_str = "\n".join([f"- {r}" for r in opp_info.get("reasons", [])])
+            is_revisit = opp_info.get("is_revisit", False)
+            revisit_note = "※ 본 종목은 과거 분석 이력이 있는 종목이나, 이번 시장 이벤트/지표 변화로 인해 [긴급 재분석 & 2026 최신 업데이트]로 발행됩니다." if is_revisit else ""
+
+            opp_context = f"""
+[이디스 금융 기회 분석 데이터]
+- 핵심 분석 테마: {trigger_name}
+- 현재 주가 수준: 약 {opp_info.get('price', 0.0)}$
+- 연간 추정 배당수익률: 약 {opp_info.get('dividend_yield', 0.0)}%
+- 감지된 주요 선정 사유:
+{reasons_str}
+{revisit_note}
+"""
+
         prompt = f"""
 당신은 글로벌 주식 시장과 현금흐름 자산을 전문으로 분석하는 월스트리트 수석 퀀트 애널리스트이자 금융 전문 칼럼니스트입니다.
 아래 종목에 대해 투자자들에게 깊이 있는 펀더멘털 분석과 객관적 리스크를 전달하는 **'프리미엄 배당 & 재무 분석 팩트시트'**를 작성해주세요.
 
 종목/주제: {topic}
+{opp_context}
 
-핵심 작성 지침 (구글 품질 가이드라인 엄수):
-1. **분량 및 심층성**: 단순 수치 표 나열을 넘어 각 데이터가 의미하는 비즈니스 경쟁력, 잉여현금흐름(FCF) 구조, 배당 지속 가능성을 충분한 줄글 서술로 설명할 것 (공백 제외 1,800자 ~ 2,500자 분량).
-2. **객관적 리스크와 하방 압력 분석(필수)**: 
-   - 고배당 뒤에 숨겨진 리스크(NAV 침식 우려, 부채 만기 구조, 금리 민감도, 배당 삭감 이력 등)를 냉정하고 비판적인 시각에서 균형 있게 다룰 것.
-3. **구조화된 섹션**:
+핵심 작성 지침 (구글 E-E-A-T 품질 가이드라인 엄수):
+1. **분량 및 심층성**: 단순 수치 표 나열을 넘어 각 데이터가 의미하는 비즈니스 경쟁력, 잉여현금흐름(FCF) 구조, 배당 지속 가능성을 충분한 줄글 서술로 설명할 것 (공백 제외 1,900자 ~ 2,600자 분량).
+2. **시의성 및 재분석 당위성(필수)**: 
+   - 독자에게 "왜 지금 이 시점에 이 종목을 다시 주목해야 하는가?"(배당 인상 공시, 주가 조정으로 인한 시가배당률 상승, 배당락일 임박 등)를 서론과 본문 전반부에서 강력하게 어필할 것.
+3. **객관적 리스크와 하방 압력 분석(필수)**: 
+   - 고배당 뒤에 숨겨진 리스크(NAV 침식 우려, 부채 만기 구조, 금리 민감도, 배당성향 악화 등)를 냉정하고 비판적인 시각에서 균형 있게 다룰 것.
+4. **구조화된 섹션**:
    - 목차(TOC)는 자동 생성을 위해 본문 맨 앞에 딱 한 번 아래 내용을 그대로 입력할 것:
      * TOC
      {{:toc}}
+   - 🚨 **왜 지금 다시 주목해야 하는가? (최신 시장 이벤트 & 선정 배경)**: 최근 배당 인상, 가격 조정, 배당락일 등 핵심 모멘텀 심층 분석
    - 🏢 **기업 개요 및 비즈니스 모델**: 매출 구조 및 잉여현금흐름 창출 메커니즘 상세 설명
-   - 💰 **핵심 배당 팩트 & 과거 성장 궤적**: 시가배당률, 지급 주기, 연속 증배 연수, 과거 5년 CAGR 등
+   - 💰 **핵심 배당 팩트 & 현금흐름 궤적**: 시가배당률, 최근 배당 인상 내역, 지급 주기, 연속 증배 연수 등
    - 📊 **재무 건전성 및 리스크 심층 평가**: FCF 배당성향, 부채 비율, 이자보상배율, 산업적 위협 요인
-   - 🎯 **월가 애널리스트 컨센서스 & 밸류에이션**: 목표주가 밴드, PER/PBR 수준, 투자의견 종합
+   - 🎯 **밸류에이션 및 가격대별 투자 전략**: 목표주가 컨센서스, DRIP(배당 재투자) 복리 시뮬레이션
    - 📋 **한눈에 보는 핵심 요약 표**: 핵심 지표를 정리한 깔끔한 마크다운 Table
-4. **Frontmatter 메타데이터**:
-   - `title`: 직관적이고 정보 가치가 명확한 제목 (예: "[종목명] 배당률 N%, 연 N회 지급! 2026년 배당 및 재무 팩트시트")
+5. **Frontmatter 메타데이터**:
+   - `title`: 클릭률과 전문성을 극대화한 매력적인 제목 (예: "[2026 최신] 리얼티 인컴(O) 배당금 또 올랐다! 지금이 매수 적기인 이유")
    - `description`: 해당 기업의 배당 매력도와 핵심 리스크 요약을 담은 1~2문장 (80~120자)
    - `categories`: [Dividend, Finance]
    - `tags`: 종목명, 티커, 배당주, 미국주식 등 4~5개
    - `image`: "https://image.pollinations.ai/prompt/[해당기업_산업_관련_영어키워드]?width=800&height=450&nologo=true"
-5. **하단 투자 면책 조항**:
+6. **하단 투자 면책 조항**:
    - 최하단에 `<div class="disclaimer-box"><p><em>(본 포스팅은 단순 정보 제공을 목적으로 작성되었으며, 특정 종목이나 상품에 대한 투자 권유가 아닙니다. 모든 투자의 판단과 책임은 투자자 본인에게 있습니다.)</em></p></div>` 포함.
-6. **금지 사항**:
+7. **금지 사항**:
    - 상업적 링크나 제휴 마케팅 문구 절대 금지.
    - 마크다운 코드블록(```markdown)으로 감싸지 말고 순수 텍스트만 출력할 것.
 
@@ -469,11 +478,11 @@ if __name__ == "__main__":
 
     try:
         print("1. 카테고리 및 주제 선정 중...")
-        category, topic = get_topic_by_category(args.category)
+        category, topic, opp_info = get_topic_by_category(args.category)
         print(f"최종 결정된 주제: {topic}")
 
         print("2. 블로그 포스트 생성 중... (Gemini API 호출)")
-        post_content = generate_blog_post(category, topic)
+        post_content = generate_blog_post(category, topic, opp_info=opp_info)
 
         print("3. 포스트 저장 중...")
         save_post(post_content, category)

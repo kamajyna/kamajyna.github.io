@@ -423,6 +423,8 @@ def save_post(content, category):
         selected_photo_url = random.choice(pool)
 
     import urllib.request
+    import ssl
+    ctx = ssl._create_unverified_context()
     downloaded = False
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
     urls_to_try = [selected_photo_url] + (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks)
@@ -431,7 +433,7 @@ def save_post(content, category):
         try:
             print(f"Downloading natural stock photo: {url_to_try[:60]}...")
             req = urllib.request.Request(url_to_try, headers=headers)
-            with urllib.request.urlopen(req, timeout=12) as resp:
+            with urllib.request.urlopen(req, timeout=12, context=ctx) as resp:
                 img_bytes = resp.read()
                 if len(img_bytes) > 5000:
                     with open(local_img_path, "wb") as f_img:

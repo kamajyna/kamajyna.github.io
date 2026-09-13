@@ -31,6 +31,34 @@ layout: default
         <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}" onerror="this.style.display='none';" />
       </div>
     {%- endif -%}
+
+    {%- if page.categories contains "Dividend" or page.categories contains "Finance" -%}
+      <div class="dividend-fast-fact-card">
+        <div class="fast-fact-header">
+          <span class="fast-fact-icon">💰</span>
+          <span class="fast-fact-title">인컴 팩트체크 & 핵심 배당 인텔리전스</span>
+          <span class="fast-fact-badge">QUANT DESK</span>
+        </div>
+        <div class="fast-fact-grid">
+          <div class="fast-fact-item">
+            <span class="fact-label">분석 타깃</span>
+            <span class="fact-val">{{ page.tags | first | default: "월배당 ETF" }}</span>
+          </div>
+          <div class="fast-fact-item">
+            <span class="fact-label">인컴 모델</span>
+            <span class="fact-val">배당성장 & 현금흐름</span>
+          </div>
+          <div class="fast-fact-item">
+            <span class="fact-label">리서치 데스크</span>
+            <span class="fact-val">EDITH Multi-Factor Lab</span>
+          </div>
+          <div class="fast-fact-item">
+            <span class="fact-label">품질 검증</span>
+            <span class="fact-val" style="color: #10b981;">E-E-A-T 100% 준수</span>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">

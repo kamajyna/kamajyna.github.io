@@ -270,4 +270,10 @@ def run_health_check(update_hq=True):
     return readiness_score, report
 
 if __name__ == "__main__":
-    run_health_check(update_hq=True)
+    score, rpt = run_health_check(update_hq=True)
+    try:
+        import submit_indexing
+        print("\n🚀 [AUTO-TRIGGER] 실시간 검색엔진 색인 전송 파이프라인 가동...")
+        submit_indexing.main()
+    except Exception as idx_err:
+        print(f"ℹ️ [AUTO-TRIGGER] 검색엔진 색인 알림 완료 또는 스킵 ({idx_err})")

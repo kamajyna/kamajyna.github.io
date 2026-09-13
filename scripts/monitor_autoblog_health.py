@@ -62,6 +62,16 @@ def check_post_quality(file_path):
     # 상업적 제휴 링크 잔존 여부
     if "partners.coupang.com" in content or "linkprice" in content or "쿠팡 파트너스" in content:
         issues.append("제휴마케팅 링크 포함 (애드센스 감점 요인)")
+
+    # 대표 이미지(image) 에셋 실존 검증 (404 플레이스홀더 원천 차단 Linter)
+    img_match = re.search(r'^image:\s*"(.*?)"', fm_text, re.MULTILINE)
+    if img_match:
+        img_val = img_match.group(1).strip()
+        if img_val.startswith("/assets/images/") or img_val.startswith("assets/images/"):
+            rel_path = img_val.lstrip("/")
+            full_img_path = os.path.join(BASE_DIR, rel_path)
+            if not os.path.exists(full_img_path):
+                issues.append(f"대표 이미지 파일 실존 누락 ({rel_path} 부재, 404 위험)")
         
     # 날짜 추출
     date_match = re.match(r"^(\d{4}-\d{2}-\d{2})", filename)

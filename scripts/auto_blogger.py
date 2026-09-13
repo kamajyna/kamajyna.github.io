@@ -15,7 +15,10 @@ try:
 except ImportError:
     pass
 
-import feedparser
+try:
+    import feedparser
+except ImportError:
+    feedparser = None
 import time
 
 try:
@@ -53,6 +56,10 @@ def get_topic_by_category(category):
         )
 
         articles = []
+        if not feedparser:
+            print("feedparser 미설치 환경: 기본 폴백 테크 토픽 풀 사용")
+            return fallback_topics
+
         for url in rss_urls:
             try:
                 feed = feedparser.parse(url)

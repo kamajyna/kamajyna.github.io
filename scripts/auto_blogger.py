@@ -379,6 +379,12 @@ def save_post(content, category):
         "coca": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
         "콜라": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
         "ko": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=1000&q=80&auto=format&fit=crop",
+        "vym": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1000&q=80&auto=format&fit=crop",
+        "뱅가드": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1000&q=80&auto=format&fit=crop",
+        "vanguard": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1000&q=80&auto=format&fit=crop",
+        "schd": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1000&q=80&auto=format&fit=crop",
+        "배당": "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=1000&q=80&auto=format&fit=crop",
+        "etf": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1000&q=80&auto=format&fit=crop",
         "nvdy": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
         "nvda": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
         "엔비디아": "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=80&auto=format&fit=crop",
@@ -436,11 +442,18 @@ def save_post(content, category):
     ctx = ssl._create_unverified_context()
     downloaded = False
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    urls_to_try = [selected_photo_url] + (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks)
     
-    for url_to_try in urls_to_try:
+    # Pollinations AI 생성 URL을 1순위 후보군에 추가
+    candidate_urls = []
+    if external_img_url and "pollinations.ai" in external_img_url:
+        candidate_urls.append(external_img_url)
+    if selected_photo_url:
+        candidate_urls.append(selected_photo_url)
+    candidate_urls += (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks)
+    
+    for url_to_try in candidate_urls:
         try:
-            print(f"Downloading natural stock photo: {url_to_try[:60]}...")
+            print(f"Downloading stock/AI photo: {url_to_try[:60]}...")
             req = urllib.request.Request(url_to_try, headers=headers)
             with urllib.request.urlopen(req, timeout=12, context=ctx) as resp:
                 img_bytes = resp.read()
@@ -452,11 +465,18 @@ def save_post(content, category):
         except Exception as e:
             print(f"Image download attempt failed ({e}), trying fallback...")
 
-    # Frontmatter의 image 필드를 로컬 상대 경로로 보정
-    if "image:" in fm_text:
-        fm_text = re.sub(r'^[ \t]*image:[^\n]*$', f'image: "{web_img_url}"', fm_text, flags=re.MULTILINE)
+    # [핵심 가드레일]: 실제 다운로드 성공 시에만 로컬 경로 주입, 실패 시 안전한 외부 CDN URL 유지하여 404 방지
+    if downloaded:
+        target_img_url = web_img_url
     else:
-        fm_text += f'\nimage: "{web_img_url}"'
+        fallback_web = external_img_url or selected_photo_url or "https://picsum.photos/800/450?grayscale"
+        target_img_url = fallback_web
+        print(f"Warning: Local download failed. Falling back to external URL: {target_img_url}")
+
+    if "image:" in fm_text:
+        fm_text = re.sub(r'^[ \t]*image:[^\n]*$', f'image: "{target_img_url}"', fm_text, flags=re.MULTILINE)
+    else:
+        fm_text += f'\nimage: "{target_img_url}"'
 
     content = f"---\n{fm_text.strip()}\n---\n\n{body_text.strip()}"
 

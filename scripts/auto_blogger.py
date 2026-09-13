@@ -465,9 +465,20 @@ def save_post(content, category):
             with urllib.request.urlopen(req, timeout=12, context=ctx) as resp:
                 img_bytes = resp.read()
                 if len(img_bytes) > 5000:
-                    with open(local_img_path, "wb") as f_img:
-                        f_img.write(img_bytes)
-                    downloaded = True
+                    try:
+                        from PIL import Image as PILImage
+                        import io
+                        img = PILImage.open(io.BytesIO(img_bytes)).convert("RGB")
+                        webp_name = f"{filename[:-3]}.webp"
+                        webp_path = os.path.join(img_dest_dir, webp_name)
+                        img.save(webp_path, "WEBP", quality=82, method=6)
+                        web_img_url = f"/assets/images/posts/{webp_name}"
+                        downloaded = True
+                        print(f"WebP optimized image created: {webp_name} ({os.path.getsize(webp_path)} bytes)")
+                    except Exception as conv_err:
+                        with open(local_img_path, "wb") as f_img:
+                            f_img.write(img_bytes)
+                        downloaded = True
                     break
         except Exception as e:
             print(f"Image download attempt failed ({e}), trying fallback...")

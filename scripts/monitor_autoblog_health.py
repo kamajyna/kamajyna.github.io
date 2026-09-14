@@ -283,3 +283,10 @@ if __name__ == "__main__":
         submit_indexing.main()
     except Exception as idx_err:
         print(f"ℹ️ [AUTO-TRIGGER] 검색엔진 색인 알림 완료 또는 스킵 ({idx_err})")
+
+    try:
+        import sync_autoblog_to_vault
+        print("\n📚 [AUTO-TRIGGER] 옵시디언 FRIDAY 볼트 지식 카드 실시간 동기화 가동...")
+        sync_autoblog_to_vault.sync_to_vault()
+    except Exception as sync_err:
+        print(f"ℹ️ [AUTO-TRIGGER] 옵시디언 볼트 동기화 스킵 ({sync_err})")

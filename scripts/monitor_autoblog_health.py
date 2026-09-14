@@ -263,9 +263,15 @@ def run_health_check(update_hq=True):
 """
             with open(db_path, "w", encoding="utf-8") as f:
                 f.write(dashboard_content)
-            print(f"[HQ] autoblog_dashboard.md 업데이트 완료")
         except Exception as e:
-            print(f"[HQ] autoblog_dashboard.md 업데이트 실패: {e}")
+            pass
+
+    # GitHub Actions 워크플로우 보강: 신규 이미지 에셋 자동 스테이징
+    try:
+        import subprocess
+        subprocess.run(["git", "add", "assets/images/posts/"], cwd=BASE_DIR, check=False)
+    except Exception:
+        pass
 
     return readiness_score, report
 

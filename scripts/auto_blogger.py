@@ -531,6 +531,13 @@ def save_post(content, category):
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content.strip())
 
+    # GitHub Actions 워크플로우 보강: assets 폴더도 함께 git add 사전 스테이징
+    try:
+        import subprocess
+        subprocess.run(["git", "add", "assets/images/posts/"], cwd=base_dir, check=False)
+    except Exception:
+        pass
+
     print(f"새 포스트가 생성되었습니다 [{category.upper()}]: {filepath}")
     return filepath
 

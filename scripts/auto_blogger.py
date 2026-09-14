@@ -444,25 +444,53 @@ def save_post(content, category):
         pool = natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks
         selected_photo_url = random.choice(pool)
 
-    import urllib.request
+    import hashlib
     import ssl
+    import urllib.parse
+    import urllib.request
     ctx = ssl._create_unverified_context()
     downloaded = False
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    
-    # Pollinations AI 생성 URL을 1순위 후보군에 추가
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8"
+    }
+
     candidate_urls = []
+    # 1. Pollinations AI URL (정규화 및 URL 인코딩)
     if external_img_url and "pollinations.ai" in external_img_url:
-        candidate_urls.append(external_img_url)
-    if selected_photo_url:
-        candidate_urls.append(selected_photo_url)
-    candidate_urls += (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks)
-    
-    for url_to_try in candidate_urls:
         try:
-            print(f"Downloading stock/AI photo: {url_to_try[:60]}...")
+            p_match = re.search(r"pollinations\.ai/prompt/([^?]+)(\?.*)?", external_img_url)
+            if p_match:
+                raw_prompt = urllib.parse.unquote(p_match.group(1))
+                clean_prompt = re.sub(r"[^\w\s-]", "", raw_prompt).strip()
+                clean_prompt = re.sub(r"\s+", "_", clean_prompt)
+                query_params = p_match.group(2) if p_match.group(2) else "?width=800&height=450&nologo=true"
+                safe_url = f"https://image.pollinations.ai/prompt/{clean_prompt}{query_params}"
+                candidate_urls.append((safe_url, 20))
+            else:
+                candidate_urls.append((external_img_url, 12))
+        except Exception:
+            candidate_urls.append((external_img_url, 12))
+
+    # 2. 키워드 매칭 실사 사진 후보군
+    if selected_photo_url:
+        candidate_urls.append((selected_photo_url, 8))
+
+    # 3. Picsum 고유 시드 기반 고화질 실사 이미지 (GitHub Actions 러너 100% 무결점 다운로드)
+    post_seed = hashlib.md5(filename.encode("utf-8")).hexdigest()[:8]
+    picsum_seed_url = f"https://picsum.photos/seed/{post_seed}/800/450"
+    candidate_urls.append((picsum_seed_url, 10))
+
+    # 4. 추가 백업 풀
+    candidate_urls.append((f"https://picsum.photos/800/450?random={post_seed}", 10))
+    for fb in (natural_tech_fallbacks if category == "tech" else natural_finance_fallbacks):
+        candidate_urls.append((fb, 6))
+
+    for url_to_try, t_out in candidate_urls:
+        try:
+            print(f"썸네일 다운로드 시도: {url_to_try[:60]}... (timeout={t_out}s)")
             req = urllib.request.Request(url_to_try, headers=headers)
-            with urllib.request.urlopen(req, timeout=12, context=ctx) as resp:
+            with urllib.request.urlopen(req, timeout=t_out, context=ctx) as resp:
                 img_bytes = resp.read()
                 if len(img_bytes) > 5000:
                     try:
@@ -474,22 +502,24 @@ def save_post(content, category):
                         img.save(webp_path, "WEBP", quality=82, method=6)
                         web_img_url = f"/assets/images/posts/{webp_name}"
                         downloaded = True
-                        print(f"WebP optimized image created: {webp_name} ({os.path.getsize(webp_path)} bytes)")
-                    except Exception as conv_err:
+                        print(f"✅ WebP 최적화 썸네일 저장 완료: {webp_name} ({os.path.getsize(webp_path)} bytes)")
+                    except Exception:
                         with open(local_img_path, "wb") as f_img:
                             f_img.write(img_bytes)
                         downloaded = True
+                        web_img_url = f"/assets/images/posts/{local_img_name}"
+                        print(f"✅ 로컬 JPG 썸네일 저장 완료: {local_img_name}")
                     break
         except Exception as e:
-            print(f"Image download attempt failed ({e}), trying fallback...")
+            print(f"다운로드 실패 ({e}), 다음 후보 폴백...")
 
-    # [핵심 가드레일]: 실제 다운로드 성공 시에만 로컬 경로 주입, 실패 시 안전한 외부 CDN URL 유지하여 404 방지
+    # [핵심 가드레일]: 로컬 정적 에셋 무결성 보장
     if downloaded:
         target_img_url = web_img_url
     else:
-        fallback_web = external_img_url or selected_photo_url or "https://picsum.photos/800/450?grayscale"
-        target_img_url = fallback_web
-        print(f"Warning: Local download failed. Falling back to external URL: {target_img_url}")
+        # 다운로드 최종 실패 시 안전한 외부 Picsum URL 유지 (404 방지)
+        target_img_url = picsum_seed_url
+        print(f"⚠️ 경고: 로컬 다운로드 실패. 외부 Picsum 시드 URL로 대체: {target_img_url}")
 
     if "image:" in fm_text:
         fm_text = re.sub(r'^[ \t]*image:[^\n]*$', f'image: "{target_img_url}"', fm_text, flags=re.MULTILINE)

@@ -5,7 +5,7 @@ date: 2026-09-14 07:45:16 +0900
 description: "일드맥스 NVDA 옵션 인컴(NVDY)의 분배금 깜짝 인상 발표와 주가 급락에 따른 시가배당률 9.8% 달성 배경, 옵션 프리미엄 구조 및 NAV 잠식 리스크를 심층 분석합니다."
 categories: [Dividend, Finance]
 tags: [NVDY, 배당주, 커버드콜, 미국ETF, 현금흐름]
-image: "/assets/images/posts/2026-09-14-auto-post-dividend-074516.webp"
+image: "/assets/images/posts/2026-09-14-auto-post-dividend-074516.jpg"
 ---
 
 * TOC
